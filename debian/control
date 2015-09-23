@@ -1,0 +1,15 @@
+Source: privacyidea-ucs-saml
+Maintainer: NetKnights GmbH  <info@netknights.it>
+Section: admin
+Priority: optional
+Build-Depends: debhelper (>= 7.4.3)
+Standards-Version: 3.9.5
+
+Package: privacyidea-ucs-saml
+Architecture: all
+Depends: ${misc:Depends}
+Description: privacyIDEA Plugin for simpleSAMLphp
+ privacyIDEA: identity, multifactor authentication, authorization.
+ This adds two factor authentication with privacyIDEA to the
+ SAML SSO for Univention Corprate Server.
+ 

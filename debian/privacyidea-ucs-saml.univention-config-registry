@@ -1,0 +1,7 @@
+Type: multifile
+Multifile: etc/simplesamlphp/authsources.php
+
+Type: subfile
+Multifile: etc/simplesamlphp/authsources.php
+Subfile: etc/simplesamlphp/01authsources-pi.php
+Variables: ^privacyidea/saml/url

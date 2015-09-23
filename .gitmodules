@@ -1,0 +1,3 @@
+[submodule "simplesamlphp-module-privacyidea"]
+	path = simplesamlphp-module-privacyidea
+	url = git@github.com:privacyidea/simplesamlphp-module-privacyidea.git

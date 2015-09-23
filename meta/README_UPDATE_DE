@@ -1,0 +1,6 @@
+<p>
+ChangeLog zu Version 2.4
+</p>
+<ul>
+<li>Die REALM Verarbeitung im RADIUS Request wurde verbessert.</li>
+</ul>

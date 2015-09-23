@@ -1,0 +1,20 @@
+<p>
+privacyIDEA RADIUS is a module that can be used to authenticate at RADIUS based systems like
+a firewall or SSL VPN with a second factor. This second factor is managed by a privacyIDEA server that
+is installed somewhere in your network.
+</p>
+<p>
+You can configure privacyIDEA RADIUS using UCR variables:
+<ul>
+<li><b>privacyidea/radius/url</b> The URL of the privacyIDEA server. If there is only one privacyIDEA server
+in your network, this variable will be set automatically.
+</li>
+<li><b>privacyidea/radius/enable</b> Set to "1" to enable OTP authentication.
+The default RADIUS configuration (in sites-enabled) will be deactivated.
+</li>
+</ul>
+</p>
+
+<p>
+Please note: You also need to create client machine definitions accordingly in the file /etc/freeradius/clients.conf.
+</p>

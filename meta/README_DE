@@ -1,0 +1,21 @@
+<p>
+privacyIDEA RADIUS ist das Modul, mit dem man sich an RADIUS basierten Systemen wie bpsw. 
+einer Firewall oder SSL VPN mit einem zweiten Faktor anmelden kann. Dieser wird für die Benutzer im privacyIDEA
+Server verwaltet. Der privacyIDEA Server kann auf einem beliebigen UCS System in
+Ihrem Netzwerk installiert sein.
+</p>
+<p>
+privacyIDEA RADIUS konfigurieren Sie über UCR Variablen:
+<ul>
+<li><b>privacyidea/radius/url</b> beschreibt die URL, wo der privacyIDEA Server gefunden wird. Dies kann bspw. https://yourserver/privacyidea sein. Wenn Sie nur einen privacyIDEA Server in Ihrem Netzwerk haben, wird die Variable automatisch gesetzt.
+</li>
+<li><b>privacyidea/radius/enable</b> setzen Sie diesen Wert auf "1", um OTP für RADIUS zu aktivieren.
+Dabei wird die Standard RADIUS-Konfiguration (in sites-enabled) deaktiviert.
+</li>
+</ul>
+</p>
+
+<p>
+<b>Bitte beachten Sie</b>:
+Ebenso müssen Sie für RADIUS Clients entsprechende Definitionen in /etc/freeradius/clients.conf anlegen. 
+</p>

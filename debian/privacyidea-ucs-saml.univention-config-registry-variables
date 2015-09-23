@@ -1,0 +1,24 @@
+[privacyidea/saml/url]
+Description[en]=The URL of the privacyIDEA system, e.g. "https://yourserver"
+Description[de]=Die URL des privacyIDEA Sytems. Bspw "https://IhrServer"
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/realm]
+Description[en]=The realm, the users should authenticate in.
+Description[de]=Der Realm, in dem sich die Benutzer anmelden.
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/verifyhost]
+Description[en]=If the hostname should be verifies (True or False)
+Description[de]=Ob der Hostname überprüft werden soll (True oder False)
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/verifypeer]
+Description[en]=If the certificate should be verifies (True or False)
+Description[de]=Ob das Zertifikat überprüft werden soll (True oder False)
+Type=str
+Categories=privacyidea
+
