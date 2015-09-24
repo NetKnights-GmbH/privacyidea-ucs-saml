@@ -1,20 +1,25 @@
 <p>
-privacyIDEA RADIUS is a module that can be used to authenticate at RADIUS based systems like
-a firewall or SSL VPN with a second factor. This second factor is managed by a privacyIDEA server that
-is installed somewhere in your network.
+privacyIDEA SAML adds two factor authentication to the
+Univention SAML (SSO) service.
+Authentication is done via privacyIDEA. The privacyIDEA service can
+be installed on any other member server in your network.
 </p>
 <p>
-You can configure privacyIDEA RADIUS using UCR variables:
+Use the following UCR varaibles to configure privacyIDEA SAML:
 <ul>
-<li><b>privacyidea/radius/url</b> The URL of the privacyIDEA server. If there is only one privacyIDEA server
-in your network, this variable will be set automatically.
+<li><b>privacyidea/saml/url</b> This is the URL, where your privacyIDEA server is located. Can be  
+"https://yourserver/privacyidea".
 </li>
-<li><b>privacyidea/radius/enable</b> Set to "1" to enable OTP authentication.
-The default RADIUS configuration (in sites-enabled) will be deactivated.
+<li><b>privacyidea/saml/enable</b> Set this to "True" to activate OTP for SAML.
+</li>
+<li>
+<b>privacyidea/saml/verifypeer</b> Set this to "True" to check the SSL certificate of the 
+privacyIDEA server.
+</li>
+<li>
+<b>privacyidea/saml/verifyhost</b> Set this to "True" to check the hostname in the
+SSL certificate of the privacyIDEA server.
 </li>
 </ul>
 </p>
 
-<p>
-Please note: You also need to create client machine definitions accordingly in the file /etc/freeradius/clients.conf.
-</p>
