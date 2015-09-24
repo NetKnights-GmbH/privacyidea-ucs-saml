@@ -22,3 +22,8 @@ Description[de]=Ob das Zertifikat überprüft werden soll (True oder False)
 Type=str
 Categories=privacyidea
 
+[privacyidea/saml/enable]
+Description[en]=Enable 2FA for SAML (set "True")
+Description[de]=Zwei-Faktor für SAML aktivieren (setze "True")
+Type=str
+Categories=privacyidea

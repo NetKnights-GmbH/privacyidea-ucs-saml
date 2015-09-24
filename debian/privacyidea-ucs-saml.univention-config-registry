@@ -1,7 +1,15 @@
 Type: multifile
 Multifile: etc/simplesamlphp/authsources.php
 
+Type: multifile
+Multifile: etc/simplesamlphp/metadata/saml20-idp-hosted.php
+
 Type: subfile
 Multifile: etc/simplesamlphp/authsources.php
-Subfile: etc/simplesamlphp/01authsources-pi.php
-Variables: ^privacyidea/saml/url
+Subfile: etc/simplesamlphp/97authsources.php
+Variables: privacyidea/saml/.*
+
+Type: subfile
+Multifile: etc/simplesamlphp/metadata/saml20-idp-hosted.php
+Subfile: etc/simplesamlphp/metadata/97saml20-idp-hosted.php
+Variables: privacyidea/saml/enable

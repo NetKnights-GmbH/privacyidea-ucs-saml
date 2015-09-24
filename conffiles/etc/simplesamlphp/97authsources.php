@@ -9,7 +9,7 @@ verifypeer = baseConfig.get('privacyidea/saml/verifypeer', 'True')
 print """
 $config['privacyidea'] = array(
                 'privacyidea:privacyidea',
-                'privacyideaserver' => '%s',"
+                'privacyideaserver' => '%s',
                 'sslverifyhost' => %s,
                 'sslverifypeer' => %s,
                 'realm' => '%s',
