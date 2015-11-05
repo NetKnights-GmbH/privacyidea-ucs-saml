@@ -1,3 +1,9 @@
+privacyidea-ucs-saml (1.1-1) wheezy; urgency=low
+
+  * Fix problem with false URL path (#1)
+
+ -- NetKnights GmbH <info@netknights.it>  Thu, 05 Nov 2015 21:48:00 +0200
+
 privacyidea-ucs-saml (1.0-2) wheezy; ugency=low
 
   * Add dependency on univention-saml

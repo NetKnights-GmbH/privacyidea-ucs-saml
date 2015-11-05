@@ -1,4 +1,10 @@
 <p>
+ChangeLog zu Version 1.1
+</p>
+<ul>
+<li>Unerlaubtes Login mit fehlerhaftem URL Pfad behoben.</li>
+</ul>
+<p>
 ChangeLog zu Version 1.0
 </p>
 <ul>
