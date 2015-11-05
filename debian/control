@@ -7,7 +7,7 @@ Standards-Version: 3.9.5
 
 Package: privacyidea-ucs-saml
 Architecture: all
-Depends: ${misc:Depends}
+Depends: ${misc:Depends}, univention-saml
 Description: privacyIDEA Plugin for simpleSAMLphp
  privacyIDEA: identity, multifactor authentication, authorization.
  This adds two factor authentication with privacyIDEA to the
