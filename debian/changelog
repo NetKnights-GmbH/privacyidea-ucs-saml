@@ -1,3 +1,10 @@
+privacyidea-ucs-saml (1.3-1) wheezy; urgency=low
+
+  * Add Challenge Response support
+  * Add U2F Token support
+
+ -- NetKnights GmbH <info@netknights.it>  Thu, 06 Dec 2015 17:30:00 +0200
+
 privacyidea-ucs-saml (1.1-1) wheezy; urgency=low
 
   * Fix problem with false URL path (#1)

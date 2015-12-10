@@ -3,7 +3,7 @@ info:
 	@echo "make builddeb     - build .deb file locally"
 	
 #VERSION=1.3~dev5
-VERSION=1.1
+VERSION=1.3
 SRCDIRS=debian conffiles simplesamlphp-module-privacyidea/
 SRCFILES=Makefile
 
