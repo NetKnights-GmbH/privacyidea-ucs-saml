@@ -5,7 +5,7 @@ Authentication is done via privacyIDEA. The privacyIDEA service can
 be installed on any other member server in your network.
 </p>
 <p>
-Use the following UCR varaibles to configure privacyIDEA SAML:
+Use the following UCR variables to configure privacyIDEA SAML:
 <ul>
 <li><b>privacyidea/saml/url</b> This is the URL, where your privacyIDEA server is located. Can be  
 "https://yourserver/privacyidea".
