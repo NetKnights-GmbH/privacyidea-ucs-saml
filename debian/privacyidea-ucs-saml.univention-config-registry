@@ -8,8 +8,11 @@ Type: subfile
 Multifile: etc/simplesamlphp/authsources.php
 Subfile: etc/simplesamlphp/97authsources.php
 Variables: privacyidea/saml/.*
+Variables: hostname
+Variables: domainname
 
 Type: subfile
 Multifile: etc/simplesamlphp/metadata/saml20-idp-hosted.php
 Subfile: etc/simplesamlphp/metadata/97saml20-idp-hosted.php
 Variables: privacyidea/saml/enable
+Variables: saml/idp/entityID
