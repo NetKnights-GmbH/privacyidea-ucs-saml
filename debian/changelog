@@ -1,3 +1,9 @@
+privacyidea-ucs-saml (1.3-2) unstable; urgency=medium
+
+  * add missing build dependency, add missing metadata
+
+ -- Florian Best <best@univention.de>  Thu, 07 Jan 2016 18:20:03 +0100
+
 privacyidea-ucs-saml (1.3-1) wheezy; urgency=low
 
   * Add Challenge Response support
