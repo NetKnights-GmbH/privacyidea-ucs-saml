@@ -1,3 +1,6 @@
 simplesamlphp-module-privacyidea/lib/Auth/Source/privacyidea.php	/usr/share/simplesamlphp/modules/privacyidea/lib/Auth/Source/
+simplesamlphp-module-privacyidea/dictionaries/				/usr/share/simplesamlphp/modules/privacyidea/
+simplesamlphp-module-privacyidea/templates/				/usr/share/simplesamlphp/modules/privacyidea/
+simplesamlphp-module-privacyidea/www/					/usr/share/simplesamlphp/modules/privacyidea/
 simplesamlphp-module-privacyidea/default-enable				/usr/share/simplesamlphp/modules/privacyidea/
 simplesamlphp-module-privacyidea/docs/privacyidea.txt			/usr/share/simplesamlphp/modules/privacyidea/docs/
