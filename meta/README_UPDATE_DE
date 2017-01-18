@@ -1,3 +1,22 @@
+<h2>ChangeLog zu Version 1.4.1</h2>
+<ul>
+  <li>Debug Log angepasst. Passwort aus Debug log entfernt.</li>
+  <li>Verschiedene Anmeldemöglichkeiten:
+        <ul>
+        <li>1. Benutzername / Passwort+OTP</li>
+        <li>1. Benutzer / Passwort 2. OTP</li>
+        <li>1. OTP 2. Benutzername / Passwort</li>
+        </ul>
+  </li>
+  <li>Holländische Übersetzung.</li>
+</ul>
+
+<p>
+ChangeLog zu Version 1.3-3
+</p>
+<ul>
+<li>Fehlende Dateien ergänzt.</li>
+</ul>
 <p>
 ChangeLog zu Version 1.3
 </p>
