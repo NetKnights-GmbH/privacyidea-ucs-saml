@@ -1,3 +1,15 @@
+privacyidea-ucs-saml (1.5-1) unstable; urgency=medium
+
+  * Add Google like Login Theme
+  * Forward the Client IP to the privacyIDEA server
+  * Allow for enhanced attribute mapping
+  * Improve robustness for encoding
+  * Remove password from Debug log
+  * Remove attributes from POST data screen
+  * Remove loginmode from redirectTrustedUrl
+
+ -- NetKnights GmbH <info@netknights.it>  Mon, 07 Aug 2017 16:30:00 +0200
+
 privacyidea-ucs-saml (1.4.1-1) unstable; urgency=medium
 
   * Modify the debug logging. Remove the password.
