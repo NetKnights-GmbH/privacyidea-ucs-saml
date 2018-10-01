@@ -1,3 +1,17 @@
+privacyidea-ucs-saml (1.6-1) squeeze; ugency=medium
+
+  * Use array as curl parameter to be able to pass a username like
+    user@realm
+  * Add support for multivalue attributes like groups or mobile numbers
+  * Return attributes as arrays to simpleSAMLphp
+  * Code cleanup: Replace [] with array()
+  * Remove debugging of attribute values
+  * Use default attribute map, if none is given in the config
+  * Add detailmap, to also map values from the details section (like serial or tokentype) to SAML attributes
+  * Add concatenation, to merge two attributes togeather
+
+ -- NetKnights GmbH <info@netknights.it>  Mon, 01 Oct 2018 10:30:00 +0200
+
 privacyidea-ucs-saml (1.5-1) unstable; urgency=medium
 
   * Add Google like Login Theme
