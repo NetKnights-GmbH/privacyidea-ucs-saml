@@ -20,5 +20,5 @@ builddeb:
 	# are written to /etc
 	(cd DEBUILD; tar -zcf privacyidea-ucs-saml_${VERSION}.orig.tar.gz --exclude=privacyidea.org/debian privacyidea-ucs-saml.org)
 	################# Build
-	(cd DEBUILD/privacyidea-ucs-saml.org; debuild --no-lintian)
+	(cd DEBUILD/privacyidea-ucs-saml.org; debuild --no-lintian -uc -us)
 
