@@ -1,3 +1,7 @@
+privacyidea-ucs-saml (1.7~dev1-1) stretch; urgency=medium
+
+ -- NetKnights GmbH <info@netknights.it>  Wed, 14 Nov 2018 16:30:00 +0200
+
 privacyidea-ucs-saml (1.6-2) stretch; urgency=medium
 
   * Use array as curl parameter to be able to pass a username like
