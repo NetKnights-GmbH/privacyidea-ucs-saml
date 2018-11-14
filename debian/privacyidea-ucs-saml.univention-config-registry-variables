@@ -23,7 +23,13 @@ Type=str
 Categories=privacyidea
 
 [privacyidea/saml/enable]
-Description[en]=Enable 2FA for SAML (set "True")
-Description[de]=Zwei-Faktor für SAML aktivieren (setze "True")
+Description[en]=Enable 2FA for SAML as authsource (set "authsource"),  as authproc (set "authproc")
+Description[de]=Zwei-Faktor für SAML aktivieren. Als Authsource (setze "authsource"), als Authproc (setze "authproc")
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/uidkey]
+Description[en]=Sets the key where the username is given, e.g. "uid"
+Description[de]=Setze den Key, in dem der Benutzername übergeben wird, bspw "uid"
 Type=str
 Categories=privacyidea
