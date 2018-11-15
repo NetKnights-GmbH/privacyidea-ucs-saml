@@ -22,8 +22,8 @@ elif enabled == 'authproc':
 			'privacyideaserver' => '%s',
 			'realm' => '%s',
 			'uidKey' => '%s',
-			'sslverifyhost' => '%s',
-			'sslverifypeer' => '%s',
+			'sslverifyhost' => %s,
+			'sslverifypeer' => %s,
 		),
 	);
 	""" % (entity_id, url, realm, uid, verifyhost, verifypeer)
