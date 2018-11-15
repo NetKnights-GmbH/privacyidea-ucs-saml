@@ -16,7 +16,7 @@ if enabled == 'authsource' or enabled == 'true':
 	print "$metadata['%s']['auth'] = 'privacyidea';" % (entity_id,)
 elif enabled == 'authproc':
 	print """
-	'authproc' => array(
+    $metadata['%s']['authproc'] = array(
 		25 => array(
 			'class' => 'privacyidea:privacyidea',
 			'privacyideaserver' => '%s',
@@ -25,8 +25,6 @@ elif enabled == 'authproc':
 			'sslverifyhost' => '%s',
 			'sslverifypeer' => '%s',
 		),
-	),
-	""" % (url, realm, uid, verifyhost, verifypeer)
+	);
+	""" % (entity_id, url, realm, uid, verifyhost, verifypeer)
 @!@
-
-baseConfig.get('privacyidea/saml/verifyhost',
