@@ -12,7 +12,7 @@ verifypeer = baseConfig.get('privacyidea/saml/verifypeer', 'True')
 uid = baseConfig.get('privacyidea/saml/uidkey', 'uid')
 enabled = baseConfig.get('privacyidea/saml/enable')
 
-if enabled == 'authsource' or enabled == 'true':
+if enabled == 'authsource' or enabled.lower() == 'true':
 	print "$metadata['%s']['auth'] = 'privacyidea';" % (entity_id,)
 elif enabled == 'authproc':
 	print """
