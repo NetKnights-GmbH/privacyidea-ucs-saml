@@ -1,3 +1,9 @@
+privacyidea-ucs-saml (1.7-1) stretch; urgency=medium
+
+  * Add auth proc filter to allow easy two step authentication
+
+ -- NetKnights GmbH <info@netknights.it>  Tue, 20 Nov 2018 08:30:00 +0200
+
 privacyidea-ucs-saml (1.6-2) stretch; urgency=medium
 
   * Use array as curl parameter to be able to pass a username like
