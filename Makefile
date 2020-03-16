@@ -18,7 +18,7 @@ clean:
 builddeb-current:
 	make clean
 	mkdir -p DEBUILD/privacyidea-ucs-saml.org
-	cp -r ${SRCDIRS} ${SRCFILES} DEBUILD/privacyidea-ucs-saml.org || true
+	cp -r ${SRCDIRS} DEBUILD/privacyidea-ucs-saml.org || true
 	# We need to touch this, so that our config files 
 	# are written to /etc
 	(cd DEBUILD; tar -zcf privacyidea-ucs-saml_${VERSION}.orig.tar.gz --exclude=privacyidea.org/debian privacyidea-ucs-saml.org)
