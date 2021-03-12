@@ -10,13 +10,24 @@ endif
 #VERSION=1.6
 SRCDIRS=debian conffiles simplesamlphp-module-privacyidea/
 SRCFILES=Makefile
+DEFAULT_CONFFILES=conffiles-v1.9
+VERSION_NUMBER=$(shell echo ${VERSION} | sed 's/\.//;s@^[^0-9]*\([0-9]\+\).*@\1@')
+
+select-conffiles:
+	if [ ${VERSION_NUMBER} -ge 19 ]; then \
+		cp -r conffiles-v1.9 conffiles; \
+	else \
+		cp -r conffiles-v1.8 conffiles; \
+	fi
 
 clean:
+	rm -fr conffiles
 	rm -fr DEBUILD
 	rm -f meta/*~
 
 builddeb-current:
 	make clean
+	make select-conffiles
 	mkdir -p DEBUILD/privacyidea-ucs-saml.org
 	cp -r ${SRCDIRS} DEBUILD/privacyidea-ucs-saml.org || true
 	# We need to touch this, so that our config files 
