@@ -1,3 +1,9 @@
+privacyidea-ucs-saml (1.9dev1) stretch; urgency=medium
+
+  * Dev version
+
+ -- NetKnights GmbH <info@netknights.it> Fri, 12 Mar 2021
+
 privacyidea-ucs-saml (1.8) stretch; urgency=medium
 
   * Add pass on no token
