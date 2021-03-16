@@ -11,12 +11,14 @@ endif
 SRCDIRS=debian conffiles simplesamlphp-module-privacyidea/
 SRCFILES=Makefile
 DEFAULT_CONFFILES=conffiles-v1.9
-VERSION_NUMBER=$(shell echo ${VERSION} | sed 's/\.//;s@^[^0-9]*\([0-9]\+\).*@\1@')
+VERSION_NUMBER=$(shell echo ${VERSION} | sed 's@^[^0-9\.]*\([0-9\.]\+\).*@\1@')
 
 select-conffiles:
-	if [ ${VERSION_NUMBER} -ge 19 ]; then \
+	if [ $(shell echo ${VERSION_NUMBER}\>=1.9 | bc) -eq 1 ]; then \
+		echo "Version: $(VERSION). Using conffiles-v1.9"; \
 		cp -r conffiles-v1.9 conffiles; \
 	else \
+		echo "Version smaller than 1.9: $(VERSION). Using conffiles-v1.8."; \
 		cp -r conffiles-v1.8 conffiles; \
 	fi
 
