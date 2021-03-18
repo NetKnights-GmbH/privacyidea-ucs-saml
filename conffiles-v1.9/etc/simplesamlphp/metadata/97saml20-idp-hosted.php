@@ -3,29 +3,29 @@ entity_id = configRegistry.get('saml/idp/entityID',
 		'https://%(hostname)s.%(domainname)s/simplesamlphp/saml2/idp/metadata.php'
 		% configRegistry)
 
-hostname = baseConfig.get('hostname')
-domainname = baseConfig.get('domainname')
+hostname = configRegistry.get('hostname')
+domainname = configRegistry.get('domainname')
 
-url = baseConfig.get('privacyidea/saml/url', 'https://privacyidea')
-verifyhost = baseConfig.get('privacyidea/saml/verifyhost', 'True')
-verifypeer = baseConfig.get('privacyidea/saml/verifypeer', 'True')
-enabledPath = baseConfig.get('privacyidea/saml/enabledPath', 'privacyIDEA')
-enabledKey = baseConfig.get('privacyidea/saml/enabledKey', 'enabled')
+url = configRegistry.get('privacyidea/saml/url', 'https://privacyidea')
+verifyhost = configRegistry.get('privacyidea/saml/verifyhost', 'True')
+verifypeer = configRegistry.get('privacyidea/saml/verifypeer', 'True')
+enabledPath = configRegistry.get('privacyidea/saml/enabledPath', 'privacyIDEA')
+enabledKey = configRegistry.get('privacyidea/saml/enabledKey', 'enabled')
 
-excludeEntityIDs = baseConfig.get('privacyidea/saml/excludeEntityIDs', 'array()')
-includeAttributes = baseConfig.get('privacyidea/saml/includeAttributes', 'array()')
-setpath = baseConfig.get('privacyidea/saml/setpath', 'privacyIDEA')
-setkey = baseConfig.get('privacyidea/saml/setkey', 'enabled')
+excludeEntityIDs = configRegistry.get('privacyidea/saml/excludeEntityIDs', 'array()')
+includeAttributes = configRegistry.get('privacyidea/saml/includeAttributes', 'array()')
+setpath = configRegistry.get('privacyidea/saml/setpath', 'privacyIDEA')
+setkey = configRegistry.get('privacyidea/saml/setkey', 'enabled')
 
-checkClientIPs = baseConfig.get('privacyidea/saml/excludeClientIPs', 'array()')
+checkClientIPs = configRegistry.get('privacyidea/saml/excludeClientIPs', 'array()')
 
-realm = baseConfig.get('privacyidea/saml/realm', '')
-uid = baseConfig.get('privacyidea/saml/uidkey', 'uid')
-SSO = baseConfig.get('privacyidea/saml/SSO', 'true')
+realm = configRegistry.get('privacyidea/saml/realm', '')
+uid = configRegistry.get('privacyidea/saml/uidkey', 'uid')
+SSO = configRegistry.get('privacyidea/saml/SSO', 'true')
 
-enabled = baseConfig.get('privacyidea/saml/enable', 'false')
+enabled = configRegistry.get('privacyidea/saml/enable', 'false')
 
-if enabled == 'authsource' or enabled.lower() == 'true':
+if enabled == 'authsource' or configRegistry.is_true('privacyidea/saml/enabled'):
 	print "$metadata['%s']['auth'] = 'privacyidea';" % (entity_id,)
 elif enabled == 'authproc':
 	print """
