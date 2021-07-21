@@ -19,7 +19,6 @@ checkClientIPs = configRegistry.get('privacyidea/saml/excludeClientIPs', '')
 
 realm = configRegistry.get('privacyidea/saml/realm', '')
 uidKey = configRegistry.get('privacyidea/saml/uidkey', 'uid')
-SSO = configRegistry.get('privacyidea/saml/SSO', 'true')
 
 enabled = configRegistry.get('privacyidea/saml/enable', 'false')
 
@@ -62,7 +61,6 @@ elif enabled == 'authproc':
 			'class' => 'privacyidea:privacyidea',
 			'realm' => '{realm}',
 			'uidKey' => '{uidKey}',
-			'SSO' => {SSO},
-		), """.format(realm=realm, uidKey=uidKey, SSO=SSO))
+		), """.format(realm=realm, uidKey=uidKey))
 	print(");")
 @!@
