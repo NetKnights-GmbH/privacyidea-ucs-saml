@@ -2,7 +2,7 @@ privacyidea-ucs-saml (1.9.1) stretch; urgency=medium
 
   * remove SSO feature due to security issue
 
- -- NetKnights GmbH <info@netknights.it>  Thu, 20 Jul 2021 10:00:00 +0200
+ -- NetKnights GmbH <info@netknights.it>  Mon, 26 Jul 2021 10:00:00 +0200
 
 privacyidea-ucs-saml (1.9) stretch; urgency=medium
 
