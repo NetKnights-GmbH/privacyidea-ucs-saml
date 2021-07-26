@@ -1,4 +1,4 @@
-privacyidea-ucs-saml (1.9) stretch; urgency=medium
+privacyidea-ucs-saml (1.9.1) stretch; urgency=medium
 
   * remove SSO feature due to security issue
 
