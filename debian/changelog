@@ -1,10 +1,14 @@
-privacyidea-ucs-saml (1.9.1) stretch; urgency=medium
+privacyidea-ucs-saml (2.0-1) stretch; urgency=medium
 
-  * remove SSO feature due to security issue
+  * Support for WebAuthn token
+  * Merged authproc filters into one, which requires only a single configuration file.
+    !!! Check the docs for the updated template of the configuration
+    - the old configuration file does not work with the new version !!!
+  * Added configurable hints to the password and OTP field
 
- -- NetKnights GmbH <info@netknights.it>  Mon, 26 Jul 2021 10:00:00 +0200
+ -- NetKnights GmbH <info@netknights.it>  Fri, 17 Sep 2021 10:00:00 +0200
 
-privacyidea-ucs-saml (1.9) stretch; urgency=medium
+privacyidea-ucs-saml (1.9-1) stretch; urgency=medium
 
   * Refactor Code
   * Enhance HTML escaping
@@ -13,11 +17,12 @@ privacyidea-ucs-saml (1.9) stretch; urgency=medium
   * Support SSO for different service providers
   * Skip privacyIDEA for isPassive requests
   * Add authproc filter to check entity IDs and user attributes
+  * remove SSO feature due to security issue
 
  -- NetKnights GmbH <info@netknights.it>  Thu, 25 Mar 2021 09:30:00 +0200
 
 
-privacyidea-ucs-saml (1.8) stretch; urgency=medium
+privacyidea-ucs-saml (1.8-1) stretch; urgency=medium
 
   * Add pass on no token
   * Add multiple uid keys
