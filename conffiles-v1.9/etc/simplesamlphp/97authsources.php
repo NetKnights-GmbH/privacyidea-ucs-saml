@@ -18,5 +18,5 @@ $config['privacyidea'] = array(
                                         'phone' => 'telePhone',
                                         'mobile' => 'mobilePhone'),
 		);
-""".format(url=url, verifyhost=verifyhost, verifypeer=verifypeer, realm=realm))
+""".format(url=url, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower(), realm=realm))
 @!@
