@@ -2,14 +2,14 @@
 @!@
 url = configRegistry.get('privacyidea/saml/url', 'https://privacyidea')
 realm = configRegistry.get('privacyidea/saml/realm', '')
-verifyhost = configRegistry.get('privacyidea/saml/verifyhost', 'True')
-verifypeer = configRegistry.get('privacyidea/saml/verifypeer', 'True')
+verifyhost = configRegistry.get('privacyidea/saml/verifyhost', 'true')
+verifypeer = configRegistry.get('privacyidea/saml/verifypeer', 'true')
 print("""
 $config['privacyidea'] = array(
-                'privacyidea:privacyidea',
-                'privacyideaserver' => '{url}',
-                'sslverifyhost' => {verifyhost},
-                'sslverifypeer' => {verifypeer},
+                'privacyidea:PrivacyideaAuthSource',
+                'privacyideaServerURL' => '{url}',
+                'sslVerifyHost' => {verifyhost},
+                'sslVerifyPeer' => {verifypeer},
                 'realm' => '{realm}',
                 'attributemap' => array('username' => 'uid',
                                         'surname' => 'surName',
