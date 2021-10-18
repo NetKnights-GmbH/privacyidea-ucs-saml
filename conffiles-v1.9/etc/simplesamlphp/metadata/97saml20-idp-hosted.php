@@ -15,7 +15,7 @@ includeAttributes = configRegistry.get('privacyidea/saml/includeAttributes', '')
 setPath = configRegistry.get('privacyidea/saml/setPath', 'privacyIDEA')
 setKey = configRegistry.get('privacyidea/saml/setKey', 'enabled')
 
-checkClientIPs = configRegistry.get('privacyidea/saml/excludeClientIPs', '')
+excludeClientIPs = configRegistry.get('privacyidea/saml/excludeClientIPs', '')
 
 realm = configRegistry.get('privacyidea/saml/realm', '')
 uidKey = configRegistry.get('privacyidea/saml/uidkey', 'uid')
@@ -27,40 +27,31 @@ if enabled == 'authsource' or configRegistry.is_true('privacyidea/saml/enabled')
 elif enabled == 'authproc':
 	print("""
     $metadata['{entity_id}']['authproc'] = array(
-		20 => array(
-                        'class' => 'privacyidea:serverconfig',
-			'privacyideaserver' => '{url}',
-                        'sslverifyhost' => {verifyhost},
-			'sslverifypeer' => {verifypeer},
-                        'enabledPath' => '{enabledPath}',
-                        'enabledKey' => '{enabledKey}',
-		),""".format(entity_id=entity_id, url=url, verifyhost=verifyhost,
-                             verifypeer=verifypeer, enabledPath=enabledPath, 
-                             enabledKey=enabledKey))
+    ),""".format(entity_id=entity_id))
 
-	if excludeEntityIDs != '':
-		print("""
-		22 => array(
-			'class' => 'privacyidea:checkEntityID',
-                        'excludeEntityIDs' => {excludeEntityIDs},
-                        'includeAttributes' => {includeAttributes},
-                        'setPath' => '{setPath}',
-                        'setKey' => '{setKey}',
-		), """.format(excludeEntityIDs=excludeEntityIDs,
-                              includeAttributes=includeAttributes,
-                              setPath=setPath, setKey=setKey))
-
-	if checkClientIPs != '':
-		print("""
-                23 => array(
-                        'class' => 'privacyidea:checkClientIP',
-                        'checkClientIPs' => {checkClientIPs},
-                ), """.format(checkClientIPs=checkClientIPs))
 	print("""
 		25 => array(
-			'class' => 'privacyidea:privacyidea',
+			'class' => 'privacyidea:PrivacyideaAuthProc',
 			'realm' => '{realm}',
 			'uidKey' => '{uidKey}',
-		), """.format(realm=realm, uidKey=uidKey))
+    ), """.format(realm=realm, uidKey=uidKey))
+
+    if excludeClientIPs != '':
+        print("""
+            'excludeClientIPs' => {excludeClientIPs},
+        ), """.format(excludeClientIPs=excludeClientIPs))
+
+    if excludeEntityIDs != '':
+        print("""
+            'checkEntityID' => 'true',
+            'excludeEntityIDs' => {excludeEntityIDs},
+            'includeAttributes' => {includeAttributes},
+            'setPath' => '{setPath}',
+            'setKey' => '{setKey}',
+            ), """.format(excludeEntityIDs=excludeEntityIDs,
+                          includeAttributes=includeAttributes,
+                          setPath=setPath,
+                          setKey=setKey))
+
 	print(");")
 @!@
