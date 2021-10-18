@@ -27,19 +27,21 @@ if enabled == 'authsource' or configRegistry.is_true('privacyidea/saml/enabled')
 elif enabled == 'authproc':
 	print("""
     $metadata['{entity_id}']['authproc'] = array(
-    ),""".format(entity_id=entity_id))
+    """.format(entity_id=entity_id))
 
 	print("""
 		25 => array(
 			'class' => 'privacyidea:PrivacyideaAuthProc',
 			'realm' => '{realm}',
 			'uidKey' => '{uidKey}',
-    ), """.format(realm=realm, uidKey=uidKey))
+            'sslVerifyHost' => '{verifyhost}',
+            'sslVerifyPeer' => '{verifypeer}',
+    """.format(realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower()))
 
     if excludeClientIPs != '':
         print("""
             'excludeClientIPs' => {excludeClientIPs},
-        ), """.format(excludeClientIPs=excludeClientIPs))
+        """.format(excludeClientIPs=excludeClientIPs))
 
     if excludeEntityIDs != '':
         print("""
@@ -48,10 +50,10 @@ elif enabled == 'authproc':
             'includeAttributes' => {includeAttributes},
             'setPath' => '{setPath}',
             'setKey' => '{setKey}',
-            ), """.format(excludeEntityIDs=excludeEntityIDs,
+            """.format(excludeEntityIDs=excludeEntityIDs,
                           includeAttributes=includeAttributes,
                           setPath=setPath,
                           setKey=setKey))
-
-	print(");")
+            
+	print("),);")
 @!@
