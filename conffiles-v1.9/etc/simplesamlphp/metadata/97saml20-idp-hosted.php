@@ -42,7 +42,7 @@ elif enabled == 'authproc':
 if excludeClientIPs != '':
         print("""
             'excludeClientIPs' => {excludeClientIPs},
-        """.format(excludeClientIPs=excludeClientIPs))
+	""".format(excludeClientIPs=excludeClientIPs))
 
 if excludeEntityIDs != '':
         print("""
