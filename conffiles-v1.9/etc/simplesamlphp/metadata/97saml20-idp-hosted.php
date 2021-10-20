@@ -37,7 +37,7 @@ elif enabled == 'authproc':
 			'uidKey' => '{uidKey}',
 			'sslVerifyHost' => '{verifyhost}',
 			'sslVerifyPeer' => '{verifypeer}',
-    """.format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower()))
+	""".format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower()))
 
 if excludeClientIPs != '':
         print("""
@@ -51,10 +51,7 @@ if excludeEntityIDs != '':
             'includeAttributes' => {includeAttributes},
             'setPath' => '{setPath}',
             'setKey' => '{setKey}',
-            """.format(excludeEntityIDs=excludeEntityIDs,
-                          includeAttributes=includeAttributes,
-                          setPath=setPath,
-                          setKey=setKey))
+	""".format(excludeEntityIDs=excludeEntityIDs, includeAttributes=includeAttributes, setPath=setPath, setKey=setKey))
             
 	print("),);")
 @!@
