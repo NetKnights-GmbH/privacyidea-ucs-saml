@@ -38,12 +38,12 @@ elif enabled == 'authproc':
             'sslVerifyPeer' => '{verifypeer}',
     """.format(realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower()))
 
-    if excludeClientIPs != '':
+if excludeClientIPs != '':
         print("""
             'excludeClientIPs' => {excludeClientIPs},
         """.format(excludeClientIPs=excludeClientIPs))
 
-    if excludeEntityIDs != '':
+if excludeEntityIDs != '':
         print("""
             'checkEntityID' => 'true',
             'excludeEntityIDs' => {excludeEntityIDs},
