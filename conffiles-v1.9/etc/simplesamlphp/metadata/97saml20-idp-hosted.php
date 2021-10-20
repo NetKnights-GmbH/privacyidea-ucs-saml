@@ -32,11 +32,11 @@ elif enabled == 'authproc':
 	print("""
 		25 => array(
 			'class' => 'privacyidea:PrivacyideaAuthProc',
-            'privacyideaServerURL' => '{url}',
+			'privacyideaServerURL' => '{url}',
 			'realm' => '{realm}',
 			'uidKey' => '{uidKey}',
-            'sslVerifyHost' => '{verifyhost}',
-            'sslVerifyPeer' => '{verifypeer}',
+			'sslVerifyHost' => '{verifyhost}',
+			'sslVerifyPeer' => '{verifypeer}',
     """.format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower()))
 
 if excludeClientIPs != '':
