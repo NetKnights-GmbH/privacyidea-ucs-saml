@@ -1,4 +1,0 @@
-[submodule "simplesamlphp-module-privacyidea"]
-	path = simplesamlphp-module-privacyidea
-	url = https://github.com/privacyidea/simplesamlphp-module-privacyidea
-	branch = 38/authprocfilter
