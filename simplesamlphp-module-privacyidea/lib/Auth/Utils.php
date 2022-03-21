@@ -306,7 +306,7 @@ class sspmod_privacyidea_Auth_Utils
 
             $state['privacyidea:privacyidea:ui']['pushAvailable'] = in_array("push", $triggeredToken);
             $state['privacyidea:privacyidea:ui']['otpAvailable'] = true; // Always show otp field
-            $state['privacyidea:privacyidea:ui']['message'] = filter_var($response->messages, FILTER_VALIDATE_STRING);
+            $state['privacyidea:privacyidea:ui']['message'] = $response->messages;
 
             if (in_array("webauthn", $triggeredToken))
             {
