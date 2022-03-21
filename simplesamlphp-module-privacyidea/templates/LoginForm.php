@@ -170,10 +170,10 @@ if ($this->data['errorCode'] !== NULL)
                                        value="<?php echo htmlspecialchars(@$this->data['mode'] ?: "otp", ENT_QUOTES) ?>"/>
 
                                 <input id="pushAvailable" type="hidden" name="pushAvailable"
-                                       value="<?php echo htmlspecialchars(@$this->data['pushAvailable'] ?: false, ENT_QUOTES) ?>"/>
+                                       value="<?php echo htmlspecialchars(@$this->data['pushAvailable'] ?: "", ENT_QUOTES) ?>"/>
 
                                 <input id="otpAvailable" type="hidden" name="otpAvailable"
-                                       value="<?php echo htmlspecialchars(@$this->data['otpAvailable'] ?: true, ENT_QUOTES) ?>"/>
+                                       value="<?php echo htmlspecialchars(@$this->data['otpAvailable'] ?: "1", ENT_QUOTES) ?>"/>
 
                                 <input id="webAuthnSignRequest" type="hidden" name="webAuthnSignRequest"
                                        value='<?php echo htmlspecialchars(@$this->data['webAuthnSignRequest'] ?: "", ENT_QUOTES) ?>'/>
