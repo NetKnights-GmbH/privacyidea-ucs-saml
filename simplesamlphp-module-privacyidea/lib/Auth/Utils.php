@@ -20,6 +20,8 @@ class sspmod_privacyidea_Auth_Utils
 
         SimpleSAML_Logger::debug("privacyIDEA: Utils::authenticatePI with form data:\n" . http_build_query($formParams, '', ', '));
 
+        $state['privacyidea:privacyidea:ui']['mode'] = $formParams['mode'];
+
         // If the mode was changed, do not make any requests
         if ($formParams["modeChanged"] == "1")
         {
@@ -27,7 +29,6 @@ class sspmod_privacyidea_Auth_Utils
             return null;
         }
 
-        $state['privacyidea:privacyidea:ui']['mode'] = $formParams['mode'];
         $serverConfig = $state['privacyidea:privacyidea'];
 
         // Get the username from elsewhere if it is not in the form
@@ -54,17 +55,28 @@ class sspmod_privacyidea_Auth_Utils
         }
 
         $response = null;
-        $transactionID = $state['privacyidea:privacyidea']['transactionID'];
+        $transactionID = "";
+        if (isset($state['privacyidea:privacyidea']['transactionID']))
+        {
+            $transactionID = $state['privacyidea:privacyidea']['transactionID'];
+        }
 
         // Send a request according to the mode
         if ($formParams['mode'] == "push")
         {
-            if ($pi->pollTransaction($transactionID))
+            try
             {
-                // If the authentication has been confirmed on the phone, the authentication has to be finalized with a
-                // call to /validate/check with an empty pass
-                // https://privacyidea.readthedocs.io/en/latest/tokens/authentication_modes.html#outofband-mode
-                $response = $pi->validateCheck($username, "", $transactionID);
+                if ($pi->pollTransaction($transactionID))
+                {
+                    // If the authentication has been confirmed on the phone, the authentication has to be finalized with a
+                    // call to /validate/check with an empty pass
+                    // https://privacyidea.readthedocs.io/en/latest/tokens/authentication_modes.html#outofband-mode
+                    $response = $pi->validateCheck($username, "", $transactionID);
+                }
+            }
+            catch (Exception $e)
+            {
+                sspmod_privacyidea_Auth_Utils::handlePrivacyIDEAException($e, $state);
             }
         }
         elseif ($formParams['mode'] == "u2f")
@@ -77,7 +89,14 @@ class sspmod_privacyidea_Auth_Utils
             }
             else
             {
-                $response = $pi->validateCheckU2F($username, $transactionID, $u2fSignResponse);
+                try
+                {
+                    $response = $pi->validateCheckU2F($username, $transactionID, $u2fSignResponse);
+                }
+                catch (Exception $e)
+                {
+                    sspmod_privacyidea_Auth_Utils::handlePrivacyIDEAException($e, $state);
+                }
             }
         }
         elseif ($formParams['mode'] == "webauthn")
@@ -91,16 +110,37 @@ class sspmod_privacyidea_Auth_Utils
             }
             else
             {
-                $response = $pi->validateCheckWebAuthn($username, $transactionID, $webAuthnSignResponse, $origin);
+                try
+                {
+                    $response = $pi->validateCheckWebAuthn($username, $transactionID, $webAuthnSignResponse, $origin);
+                }
+                catch (Exception $e)
+                {
+                    self::handlePrivacyIDEAException($e, $state);
+                }
             }
         }
         else
         {
-            $response = $pi->validateCheck($username, $formParams["otp"], $transactionID);
+            try
+            {
+                $response = $pi->validateCheck($username, $formParams["otp"], $transactionID);
+            }
+            catch (Exception $e)
+            {
+                self::handlePrivacyIDEAException($e, $state);
+            }
         }
         $counter = $formParams['loadCounter'];
         $state['privacyidea:privacyidea:ui']['loadCounter'] = $counter + 1;
         return $response;
+    }
+
+    public static function handlePrivacyIDEAException($exception, &$state)
+    {
+        SimpleSAML_Logger::error("Exception: " . $exception->getMessage());
+        $state['privacyidea:privacyidea']['errorCode'] = $exception->getCode();
+        $state['privacyidea:privacyidea']['errorMessage'] = $exception->getMessage();
     }
 
     /**
@@ -368,7 +408,8 @@ class sspmod_privacyidea_Auth_Utils
     {
         if (isset($config['enabledPath']) || isset($state['enabledPath']))
         {
-            if ($config['enabledKey'] === false || $state['enabledKey'] === false)
+            if (isset($config['enabledKey'])
+                && ($config['enabledKey'] === false || $state['enabledKey'] === false))
             {
                 return true;
             }
