@@ -1,14 +1,14 @@
 privacyidea-ucs-saml (2.1.2-1) stretch; urgency=medium
 
- * Fixed enabledKey
- * Added HTML escaping for values in the login form
+  * Fixed enabledKey
+  * Added HTML escaping for values in the login form
  
  -- NetKnights GmbH <info@netknights.it>  Wed, 23 Mar 2022 10:00:00 +0200
  
 privacyidea-ucs-saml (2.1.1-1) stretch; urgency=medium
 
- * Fixed installation with composer
- * Fixed uncaught error when network problems occur
+  * Fixed installation with composer
+  * Fixed uncaught error when network problems occur
 
  -- NetKnights GmbH <info@netknights.it>  Fri, 18 Mar 2022 10:00:00 +0200
 
