@@ -1,4 +1,4 @@
-simplesamlphp-module-privacyidea/lib/Auth/                              /usr/share/simplesamlphp/modules/privacyidea/lib/
+simplesamlphp-module-privacyidea/lib/                              /usr/share/simplesamlphp/modules/privacyidea/
 simplesamlphp-module-privacyidea/dictionaries/				/usr/share/simplesamlphp/modules/privacyidea/
 simplesamlphp-module-privacyidea/templates/				/usr/share/simplesamlphp/modules/privacyidea/
 simplesamlphp-module-privacyidea/www/					/usr/share/simplesamlphp/modules/privacyidea/
