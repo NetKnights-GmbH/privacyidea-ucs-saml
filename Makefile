@@ -3,7 +3,7 @@ info:
 	@echo "make builddeb     - build .deb file locally"
 
 ifndef VERSION
-        $(error VERSION not set. Set VERSION to build like VERSION=1.7)
+	$(error VERSION not set. Set VERSION to build like VERSION=1.7)
 	$(error This is a VERSION number is a github tag!)
 endif
 #VERSION=1.3~dev5
@@ -32,7 +32,7 @@ builddeb-current:
 	make select-conffiles
 	mkdir -p DEBUILD/privacyidea-ucs-saml.org
 	cp -r ${SRCDIRS} DEBUILD/privacyidea-ucs-saml.org || true
-	# We need to touch this, so that our config files 
+	# We need to touch this, so that our config files
 	# are written to /etc
 	(cd DEBUILD; tar -zcf privacyidea-ucs-saml_${VERSION}.orig.tar.gz --exclude=privacyidea.org/debian privacyidea-ucs-saml.org)
 	################# Build

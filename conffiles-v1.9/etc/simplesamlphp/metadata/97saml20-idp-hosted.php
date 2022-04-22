@@ -22,7 +22,7 @@ uidKey = configRegistry.get('privacyidea/saml/uidkey', 'uid')
 
 enabled = configRegistry.get('privacyidea/saml/enable', 'false')
 
-if enabled == 'authsource' or configRegistry.is_true('privacyidea/saml/enabled'):
+if enabled == 'authsource' or configRegistry.is_true('privacyidea/saml/enable'):
     print("$metadata['{entity_id}']['auth'] = 'privacyidea';".format(entity_id=entity_id))
 elif enabled == 'authproc':
     print("$metadata['{entity_id}']['authproc'] = array(".format(entity_id=entity_id))

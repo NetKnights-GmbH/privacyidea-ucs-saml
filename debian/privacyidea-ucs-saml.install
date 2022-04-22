@@ -1,7 +1,7 @@
-simplesamlphp-module-privacyidea/lib/                              /usr/share/simplesamlphp/modules/privacyidea/
-simplesamlphp-module-privacyidea/dictionaries/				/usr/share/simplesamlphp/modules/privacyidea/
+simplesamlphp-module-privacyidea/default-enable			/usr/share/simplesamlphp/modules/privacyidea/
+simplesamlphp-module-privacyidea/dictionaries/			/usr/share/simplesamlphp/modules/privacyidea/
+simplesamlphp-module-privacyidea/docs/privacyidea.md	/usr/share/simplesamlphp/modules/privacyidea/docs/
+simplesamlphp-module-privacyidea/lib/					/usr/share/simplesamlphp/modules/privacyidea/
 simplesamlphp-module-privacyidea/templates/				/usr/share/simplesamlphp/modules/privacyidea/
-simplesamlphp-module-privacyidea/www/					/usr/share/simplesamlphp/modules/privacyidea/
-simplesamlphp-module-privacyidea/default-enable				/usr/share/simplesamlphp/modules/privacyidea/
-simplesamlphp-module-privacyidea/docs/privacyidea.md			/usr/share/simplesamlphp/modules/privacyidea/docs/
 simplesamlphp-module-privacyidea/themes/				/usr/share/simplesamlphp/modules/privacyidea/
+simplesamlphp-module-privacyidea/www/					/usr/share/simplesamlphp/modules/privacyidea/
