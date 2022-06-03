@@ -35,7 +35,10 @@ elif enabled == 'authproc':
         'uidKey' => '{uidKey}',
         'sslVerifyHost' => '{verifyhost}',
         'sslVerifyPeer' => '{verifypeer}',
-        """.format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower()))
+        'enabledPath' => '{enabledPath}',
+        'enabledKey' => '{enabledKey}',
+        """.format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower(),
+            enabledPath=enabledPath, enabledKey=enabledKey))
 
     if excludeClientIPs != '':
         print("""
