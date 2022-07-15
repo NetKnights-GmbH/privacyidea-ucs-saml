@@ -33,3 +33,111 @@ Description[en]=Sets the key where the username is given, e.g. "uid"
 Description[de]=Setze den Key, in dem der Benutzername übergeben wird, bspw "uid"
 Type=str
 Categories=privacyidea
+
+[privacyidea/saml/doTriggerChallenge]
+Description[en]=You can enable or disable trigger challenge.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/serviceAccount]
+Description[en]=Enter the username of your service account.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/servicePass]
+Description[en]=Enter the password for your service account.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/doSendPassword]
+Description[en]=Set doSendPassword to 'true' to send a request to validate/check with the username and an empty pass prior to the login.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/otpFieldHint]
+Description[en]=Set custom hints for the OTP field.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/passFieldHint]
+Description[en]=Set custom hints for the password field.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/SSO]
+Description[en]=Set this to 'true' if you want to use single sign on.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/preferredTokenType]
+Description[en]=Set preferredTokenType to your favourite token type.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/preferredTokenType]
+Description[en]=Set preferredTokenType to your favourite token type.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/doEnrollToken]
+Description[en]=You can add this option, if you want to enroll tokens for users, who do not have one yet.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/tokenType]
+Description[en]=You can select a time based otp (totp), an event based otp (hotp) or an u2f (u2f).
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/tryFirstAuthentication]
+Description[en]=If you want to use passOnNoToken or passOnNoUser, you can decide, if this module should send a password to privacyIDEA.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/tryFirstAuthPass]
+Description[en]=You can decide, which password should be used for tryFirstAuthentication
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/excludeClientIPs]
+Description[en]=You can exclude clients with specified ip addresses from 2FA. If there is a match, the filter will set the specified state variable to false and thereby disables privacyIDEA for this entityID.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/excludeEntityIDs]
+Description[en]=See documentation.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/includeAttributes]
+Description[en]=See documentation.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/setPath]
+Description[en]=See documentation.
+Description[de]=
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/setKey]
+Description[en]=See documentation.
+Description[de]=
+Type=str
+Categories=privacyidea
