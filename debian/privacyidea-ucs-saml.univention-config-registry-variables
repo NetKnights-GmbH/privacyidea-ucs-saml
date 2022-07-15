@@ -82,12 +82,6 @@ Description[de]=Setzen Sie preferredTokenType auf Ihren bevorzugten Token-Type.
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/preferredTokenType]
-Description[en]=Set preferredTokenType to your favourite token type.
-Description[de]=
-Type=str
-Categories=privacyidea
-
 [privacyidea/saml/doEnrollToken]
 Description[en]=You can add this option, if you want to enroll tokens for users, who do not have one yet.
 Description[de]=Sie können diese Option hinzufügen, wenn Sie Token für Benutzer registrieren möchten, die noch keine haben.
