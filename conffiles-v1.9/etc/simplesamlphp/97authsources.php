@@ -25,7 +25,7 @@ $config['privacyidea'] = array(
                 'doSendPassword' => '{doSendPassword}',
                 'otpFieldHint' => '{otpFieldHint}',
                 'passFieldHint' => '{passFieldHint}',
-                'SSO' => '{sso}',
+                'SSO' => '{SSO}',
                 'preferredTokenType' => '{preferredTokenType}',
                 'attributemap' => array('username' => 'uid',
                                         'surname' => 'surName',
@@ -37,5 +37,5 @@ $config['privacyidea'] = array(
 """.format(url=url, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower(), realm=realm,
             doTriggerChallenge=doTriggerChallenge, serviceAccount=serviceAccount, servicePass=servicePass,
             doSendPassword=doSendPassword, otpFieldHint=otpFieldHint, passFieldHint=passFieldHint,
-            sso=sso.lower(), preferredTokenType=preferredTokenType))
+            SSO=SSO.lower(), preferredTokenType=preferredTokenType))
 @!@
