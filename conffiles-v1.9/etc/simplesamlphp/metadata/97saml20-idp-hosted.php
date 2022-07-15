@@ -4,7 +4,7 @@ domainname = configRegistry.get('domainname')
 entity_id = configRegistry.get('saml/idp/entityID',
     'https://{0!s}.{1!s}/simplesamlphp/saml2/idp/metadata.php'.format(hostname, domainname))
 
-// Here default values are defined
+# Here default values are defined
 url = configRegistry.get('privacyidea/saml/url', 'https://privacyidea')
 verifyhost = configRegistry.get('privacyidea/saml/verifyhost', 'true')
 verifypeer = configRegistry.get('privacyidea/saml/verifypeer', 'true')
