@@ -37,8 +37,24 @@ elif enabled == 'authproc':
         'sslVerifyPeer' => '{verifypeer}',
         'enabledPath' => '{enabledPath}',
         'enabledKey' => '{enabledKey}',
-        """.format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower(),
-            enabledPath=enabledPath, enabledKey=enabledKey))
+        'doTriggerChallenge' => '{triggerChallenge}',
+        'serviceAccount' => '{serviceAccount}',
+        'servicePass' => '{servicePass}',
+        'doSendPassword' => '{doSendPassword}',
+        'otpFieldHint' => '{otpFieldHint}',
+        'passFieldHint' => '{passFieldHint}',
+        'SSO' => '{sso}',
+        'preferredTokenType' => '{preferredTokenType}',
+        'doEnrollToken' => '{doEnrollToken}',
+        'tokenType' => '{tokenType}',
+        'tryFirstAuthentication' => '{tryFirstAuthentication}',
+        'tryFirstAuthPass' => '{tryFirstAuthPass}',
+""".format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower(),
+            enabledPath=enabledPath, enabledKey=enabledKey, triggerChallenge=triggerChallenge.lower(),
+            serviceAccount=serviceAccount, servicePass=servicePass, doSendPassword=doSendPassword,
+            otpFieldHint=otpFieldHint, passFieldHint=passFieldHint, sso=sso.lower(), preferredTokenType=preferredTokenType,
+            doEnrollToken=doEnrollToken, tokenType=tokenType, tryFirstAuthentication=tryFirstAuthentication.lower(),
+            tryFirstAuthPass=tryFirstAuthPass))
 
     if excludeClientIPs != '':
         print("""
