@@ -78,7 +78,7 @@ Categories=privacyidea
 
 [privacyidea/saml/preferredTokenType]
 Description[en]=(optional) Set preferredTokenType to token which should be set as default if triggered: webauthn, u2f, push, otp.
-Description[de]=(Optional) Setzen Sie preferredTokenType auf Ihren bevorzugten Token-Type. //todo
+Description[de]=(Optional) Legen Sie bevorzugten Token "preferredTokenType" fest, das als Standard ausgelöst wird: webauthn, u2f, push, otp.
 Type=str
 Categories=privacyidea
 
@@ -90,7 +90,7 @@ Categories=privacyidea
 
 [privacyidea/saml/tokenType]
 Description[en]=(optional) You can select a time based otp (totp), an event based otp (hotp) or an u2f (u2f) to enroll.
-Description[de]=(Optional) Sie können ein zeitbasiertes otp (TOTP), ein ereignisbasiertes otp (HOTP) oder ein u2f (U2F) wählen. //todo
+Description[de]=(Optional) Sie können ein zeitbasiertes otp (totp), ein ereignisbasiertes otp (hotp) oder ein u2f (u2f) für die Anmeldung auswählen.
 Type=str
 Categories=privacyidea
 
