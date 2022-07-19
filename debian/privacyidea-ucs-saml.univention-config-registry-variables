@@ -11,14 +11,14 @@ Type=str
 Categories=privacyidea
 
 [privacyidea/saml/verifyhost]
-Description[en]=If the hostname should be verifies (True or False)
-Description[de]=Ob der Hostname überprüft werden soll (True oder False)
+Description[en]=If the hostname should be verifies (true or false)
+Description[de]=Ob der Hostname überprüft werden soll (true oder false)
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/verifypeer]
-Description[en]=If the certificate should be verifies (True or False)
-Description[de]=Ob das Zertifikat überprüft werden soll (True oder False)
+Description[en]=If the certificate should be verifies (true or false)
+Description[de]=Ob das Zertifikat überprüft werden soll (true oder false)
 Type=str
 Categories=privacyidea
 
@@ -77,8 +77,8 @@ Type=str
 Categories=privacyidea
 
 [privacyidea/saml/preferredTokenType]
-Description[en]=Set preferredTokenType to your favourite token type.
-Description[de]=Setzen Sie preferredTokenType auf Ihren bevorzugten Token-Type.
+Description[en]=Set preferredTokenType to token which should be set as default if triggered: webauthn, u2f, push, otp.
+Description[de]=Setzen Sie preferredTokenType auf Ihren bevorzugten Token-Type. //todo
 Type=str
 Categories=privacyidea
 
@@ -89,8 +89,8 @@ Type=str
 Categories=privacyidea
 
 [privacyidea/saml/tokenType]
-Description[en]=You can select a time based otp (totp), an event based otp (hotp) or an u2f (u2f).
-Description[de]=Sie können ein zeitbasiertes otp (TOTP), ein ereignisbasiertes otp (HOTP) oder ein u2f (U2F) wählen.
+Description[en]=You can select a time based otp (totp), an event based otp (hotp) or an u2f (u2f) to enroll.
+Description[de]=Sie können ein zeitbasiertes otp (TOTP), ein ereignisbasiertes otp (HOTP) oder ein u2f (U2F) wählen. //todo
 Type=str
 Categories=privacyidea
 
