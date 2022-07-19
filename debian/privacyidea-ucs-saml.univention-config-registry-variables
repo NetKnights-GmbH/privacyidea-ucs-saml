@@ -113,25 +113,25 @@ Type=str
 Categories=privacyidea
 
 [privacyidea/saml/excludeEntityIDs]
-Description[en]=(optional) See documentation.
-Description[de]=(Optional) Siehe Dokumentation.
+Description[en]=See documentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
+Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/includeAttributes]
-Description[en]=(optional) See documentation.
-Description[de]=(Optional) Siehe Dokumentation.
+Description[en]=See documentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
+Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/setPath]
-Description[en]=(optional) See documentation.
-Description[de]=(Optional) Siehe Dokumentation.
+Description[en]=See documentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
+Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/setKey]
-Description[en]=(optional) See documentation.
-Description[de]=(Optional) Siehe Dokumentation.
+Description[en]=See documentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
+Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
 Type=str
 Categories=privacyidea
