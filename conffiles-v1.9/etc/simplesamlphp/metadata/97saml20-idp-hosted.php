@@ -15,7 +15,6 @@ serviceAccount = configRegistry.get('privacyidea/saml/serviceAccount', 'service'
 servicePass = configRegistry.get('privacyidea/saml/servicePass', 'service')
 doSendPassword = configRegistry.get('privacyidea/saml/doSendPassword', 'false')
 otpFieldHint = configRegistry.get('privacyidea/saml/otpFieldHint', 'Please enter OTP')
-passFieldHint = configRegistry.get('privacyidea/saml/passFieldHint', 'Please enter password')
 SSO = configRegistry.get('privacyidea/saml/SSO', 'false')
 preferredTokenType = configRegistry.get('privacyidea/saml/preferredTokenType', 'otp')
 doEnrollToken = configRegistry.get('privacyidea/saml/doEnrollToken', 'false')
@@ -55,7 +54,6 @@ elif enabled == 'authproc':
         'servicePass' => '{servicePass}',
         'doSendPassword' => '{doSendPassword}',
         'otpFieldHint' => '{otpFieldHint}',
-        'passFieldHint' => '{passFieldHint}',
         'SSO' => '{SSO}',
         'preferredTokenType' => '{preferredTokenType}',
         'doEnrollToken' => '{doEnrollToken}',
@@ -65,7 +63,7 @@ elif enabled == 'authproc':
 """.format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower(),
             enabledPath=enabledPath, enabledKey=enabledKey, doTriggerChallenge=doTriggerChallenge.lower(),
             serviceAccount=serviceAccount, servicePass=servicePass, doSendPassword=doSendPassword,
-            otpFieldHint=otpFieldHint, passFieldHint=passFieldHint, SSO=SSO.lower(), preferredTokenType=preferredTokenType,
+            otpFieldHint=otpFieldHint, SSO=SSO.lower(), preferredTokenType=preferredTokenType,
             doEnrollToken=doEnrollToken, tokenType=tokenType, tryFirstAuthentication=tryFirstAuthentication.lower(),
             tryFirstAuthPass=tryFirstAuthPass))
 
