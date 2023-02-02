@@ -1,6 +1,6 @@
 <?php
 
-//namespace PrivacyIDEA\PHPClient;
+//namespace PrivacyIdea\PHPClient;
 
 const AUTHENTICATORDATA = "authenticatordata";
 const CLIENTDATA = "clientdata";
@@ -70,8 +70,7 @@ class PrivacyIDEA
         assert('string' === gettype($username));
         assert('string' === gettype($pass));
 
-        // Check if parameters are set
-        if (!empty($username) || !empty($pass))
+        if (!empty($username))
         {
             $params["user"] = $username;
             $params["pass"] = $pass;
@@ -96,7 +95,7 @@ class PrivacyIDEA
         }
         else
         {
-            $this->debugLog("Missing username or pass for /validate/check.");
+            $this->debugLog("Missing username for /validate/check.");
         }
         return null;
     }
@@ -188,6 +187,11 @@ class PrivacyIDEA
             return null;
         }
 
+        if (!empty($this->realm))
+        {
+            $params["realm"] = $this->realm;
+        }
+
         $params["user"] = $username;
         $params["genkey"] = $genkey;
         $params["type"] = $type;
@@ -199,7 +203,7 @@ class PrivacyIDEA
         $header = array("authorization:" . $authToken);
 
         // Check if user has token
-        $tokenInfo = json_decode($this->sendRequest(array("user" => $params['user']), $header, 'GET', '/token/'));
+        $tokenInfo = json_decode($this->sendRequest(array("user" => $username, "realm" => $params["realm"]), $header, 'GET', '/token'));
 
         if (!empty($tokenInfo->result->value->tokens))
         {
@@ -230,7 +234,7 @@ class PrivacyIDEA
         assert('string' === gettype($webAuthnSignResponse));
         assert('string' === gettype($origin));
 
-        if (!empty($username) || !empty($transactionID))
+        if (!empty($username) && !empty($transactionID) && !empty($webAuthnSignResponse) && !empty($origin))
         {
             // Compose standard validate/check params
             $params["user"] = $username;
@@ -289,7 +293,7 @@ class PrivacyIDEA
         assert('string' === gettype($u2fSignResponse));
 
         // Check if required parameters are set
-        if (!empty($username) || !empty($transactionID) || !empty($u2fSignResponse))
+        if (!empty($username) && !empty($transactionID) && !empty($u2fSignResponse))
         {
             // Compose standard validate/check params
             $params["user"] = $username;
@@ -369,7 +373,7 @@ class PrivacyIDEA
      * @param $httpMethod string GET or POST
      * @param $endpoint string endpoint of the privacyIDEA API (e.g. /validate/check)
      * @return string returns a string with the response from server
-     * @throws PIBadRequestException if an error occurres
+     * @throws PIBadRequestException if an error occurs
      */
     public function sendRequest(array $params, array $headers, $httpMethod, $endpoint)
     {
@@ -435,7 +439,7 @@ class PrivacyIDEA
             // Handle error
             $curlErrno = curl_errno($curlInstance);
             $this->errorLog("Bad request: " . curl_error($curlInstance) . " errno: " . $curlErrno);
-            throw new PrivacyIDEA\PHPClient\PIBadRequestException("Unable to reach the authentication server (" . $curlErrno . ")");
+            throw new PIBadRequestException("Unable to reach the authentication server (" . $curlErrno . ")");
         }
 
         $headerSize = curl_getinfo($curlInstance, CURLINFO_HEADER_SIZE);

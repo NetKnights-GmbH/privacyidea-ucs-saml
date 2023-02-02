@@ -1,6 +1,6 @@
 {
   "name": "privacyidea/privacyidea-php-client",
-  "description": "This is the privacyIDEA-PHP-Client. The library that will help you to connect your plugin to the privacyIDEA server using REST APIs.",
+  "description": "PHP Client to ease the use of the privacyIDEA API.",
   "license": "AGPL-3.0-or-later",
   "minimum-stability": "stable",
   "authors": [
@@ -10,22 +10,24 @@
     }
   ],
   "autoload": {
-      "psr-4": {
-          "": "src"
-      }
+    "psr-4": {
+      "": "src"
+    }
   },
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/privacyidea/sdk-client"
+      "url": "https://github.com/privacyidea/php-client"
     }
   ],
   "require": {
-    "php": ">=5.6",
-    "phpunit/phpunit": "^9.5",
-    "internations/http-mock": ">=0.14.0",
+    "php": ">=7.1",
     "curl/curl": "*",
     "ext-json": "*",
     "ext-curl": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "internations/http-mock": "*"
   }
 }
