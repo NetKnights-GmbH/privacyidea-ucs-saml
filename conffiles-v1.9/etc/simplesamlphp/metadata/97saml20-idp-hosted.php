@@ -5,15 +5,14 @@ entity_id = configRegistry.get('saml/idp/entityID',
     'https://{0!s}.{1!s}/simplesamlphp/saml2/idp/metadata.php'.format(hostname, domainname))
 
 # Here default values are defined
-url = configRegistry.get('privacyidea/saml/url', 'https://privacyidea')
-verifyhost = configRegistry.get('privacyidea/saml/verifyhost', 'true')
-verifypeer = configRegistry.get('privacyidea/saml/verifypeer', 'true')
+privacyideaServerURL = configRegistry.get('privacyidea/saml/privacyideaServerURL', 'https://privacyidea')
+verifyHost = configRegistry.get('privacyidea/saml/verifyHost', 'true')
+verifyPeer = configRegistry.get('privacyidea/saml/verifyPeer', 'true')
 enabledPath = configRegistry.get('privacyidea/saml/enabledPath', 'privacyIDEA')
 enabledKey = configRegistry.get('privacyidea/saml/enabledKey', 'enabled')
-doTriggerChallenge = configRegistry.get('privacyidea/saml/doTriggerChallenge', 'false')
+authenticationFlow = configRegistry.get('privacyidea/saml/authenticationFlow', 'default')
 serviceAccount = configRegistry.get('privacyidea/saml/serviceAccount', 'service')
 servicePass = configRegistry.get('privacyidea/saml/servicePass', 'service')
-doSendPassword = configRegistry.get('privacyidea/saml/doSendPassword', 'false')
 otpFieldHint = configRegistry.get('privacyidea/saml/otpFieldHint', 'Please enter OTP')
 SSO = configRegistry.get('privacyidea/saml/SSO', 'false')
 preferredTokenType = configRegistry.get('privacyidea/saml/preferredTokenType', 'otp')
@@ -42,17 +41,16 @@ elif enabled == 'authproc':
     print("""
     25 => array(
         'class' => 'privacyidea:PrivacyideaAuthProc',
-        'privacyideaServerURL' => '{url}',
+        'privacyideaServerURL' => '{privacyideaServerURL}',
         'realm' => '{realm}',
         'uidKey' => '{uidKey}',
-        'sslVerifyHost' => '{verifyhost}',
-        'sslVerifyPeer' => '{verifypeer}',
+        'sslVerifyHost' => '{verifyHost}',
+        'sslVerifyPeer' => '{verifyPeer}',
         'enabledPath' => '{enabledPath}',
         'enabledKey' => '{enabledKey}',
-        'doTriggerChallenge' => '{doTriggerChallenge}',
+        'authenticationFlow' => '{authenticationFlow}',
         'serviceAccount' => '{serviceAccount}',
         'servicePass' => '{servicePass}',
-        'doSendPassword' => '{doSendPassword}',
         'otpFieldHint' => '{otpFieldHint}',
         'SSO' => '{SSO}',
         'preferredTokenType' => '{preferredTokenType}',
@@ -60,9 +58,9 @@ elif enabled == 'authproc':
         'tokenType' => '{tokenType}',
         'tryFirstAuthentication' => '{tryFirstAuthentication}',
         'tryFirstAuthPass' => '{tryFirstAuthPass}',
-""".format(url=url, realm=realm, uidKey=uidKey, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower(),
-            enabledPath=enabledPath, enabledKey=enabledKey, doTriggerChallenge=doTriggerChallenge.lower(),
-            serviceAccount=serviceAccount, servicePass=servicePass, doSendPassword=doSendPassword,
+""".format(privacyideaServerURL=privacyideaServerURL, realm=realm, uidKey=uidKey, verifyHost=verifyHost.lower(), verifyPeer=verifyPeer.lower(),
+            enabledPath=enabledPath, enabledKey=enabledKey, authenticationFlow=authenticationFlow,
+            serviceAccount=serviceAccount, servicePass=servicePass,
             otpFieldHint=otpFieldHint, SSO=SSO.lower(), preferredTokenType=preferredTokenType,
             doEnrollToken=doEnrollToken, tokenType=tokenType, tryFirstAuthentication=tryFirstAuthentication.lower(),
             tryFirstAuthPass=tryFirstAuthPass))
