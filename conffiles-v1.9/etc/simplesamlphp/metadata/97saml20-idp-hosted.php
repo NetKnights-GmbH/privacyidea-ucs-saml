@@ -4,7 +4,7 @@ domainname = configRegistry.get('domainname')
 entity_id = configRegistry.get('saml/idp/entityID',
     'https://{0!s}.{1!s}/simplesamlphp/saml2/idp/metadata.php'.format(hostname, domainname))
 
-# Here default values are defined
+# Here are defined the default values
 privacyideaServerURL = configRegistry.get('privacyidea/saml/privacyideaServerURL', 'https://privacyidea')
 sslVerifyHost = configRegistry.get('privacyidea/saml/sslVerifyHost', 'true')
 sslVerifyPeer = configRegistry.get('privacyidea/saml/sslVerifyPeer', 'true')
@@ -29,7 +29,7 @@ setKey = configRegistry.get('privacyidea/saml/setKey', 'enabled')
 excludeClientIPs = configRegistry.get('privacyidea/saml/excludeClientIPs', '')
 
 realm = configRegistry.get('privacyidea/saml/realm', '')
-uidKey = configRegistry.get('privacyidea/saml/uidkey', 'uid')
+uidKey = configRegistry.get('privacyidea/saml/uidKey', 'uid')
 
 enabled = configRegistry.get('privacyidea/saml/enable', 'false')
 
@@ -58,12 +58,12 @@ elif enabled == 'authproc':
         'tokenType' => '{tokenType}',
         'tryFirstAuthentication' => '{tryFirstAuthentication}',
         'tryFirstAuthPass' => '{tryFirstAuthPass}',
-""".format(privacyideaServerURL=privacyideaServerURL, realm=realm, uidKey=uidKey, sslVerifyHost=sslVerifyHost.lower(), sslVerifyPeer=sslVerifyPeer.lower(),
-            enabledPath=enabledPath, enabledKey=enabledKey, authenticationFlow=authenticationFlow,
-            serviceAccount=serviceAccount, servicePass=servicePass,
+""".format(privacyideaServerURL=privacyideaServerURL, realm=realm, uidKey=uidKey, sslVerifyHost=sslVerifyHost.lower(),
+            sslVerifyPeer=sslVerifyPeer.lower(), enabledPath=enabledPath, enabledKey=enabledKey,
+            authenticationFlow=authenticationFlow, serviceAccount=serviceAccount, servicePass=servicePass,
             otpFieldHint=otpFieldHint, SSO=SSO.lower(), preferredTokenType=preferredTokenType,
-            doEnrollToken=doEnrollToken, tokenType=tokenType, tryFirstAuthentication=tryFirstAuthentication.lower(),
-            tryFirstAuthPass=tryFirstAuthPass))
+            doEnrollToken=doEnrollToken, tokenType=tokenType,
+            tryFirstAuthentication=tryFirstAuthentication.lower(), tryFirstAuthPass=tryFirstAuthPass))
 
     if excludeClientIPs != '':
         print("""
