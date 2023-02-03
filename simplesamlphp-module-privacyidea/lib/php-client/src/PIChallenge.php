@@ -1,6 +1,6 @@
 <?php
 
-//namespace PrivacyIDEA\PHPClient;
+//namespace PrivacyIdea\PHPClient;
 
 class PIChallenge
 {
@@ -10,8 +10,14 @@ class PIChallenge
     /* @var string Message for this challenge. */
     public $message = "";
 
+    /* @var string Image data for this challenge. */
+    public $image = "";
+
     /* @var string TransactionId to reference this challenge in later requests. */
     public $transactionID = "";
+
+    /* @var string Client mode in which the challenge should be processed. */
+    public $clientMode = "";
 
     /* @var string Serial of the token this challenge is for. */
     public $serial = "";

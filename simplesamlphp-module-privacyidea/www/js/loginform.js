@@ -59,6 +59,7 @@ function t(key) {
     return JSON.parse(document.getElementById("privacyidea-translations").content)[key];
 }
 
+// Handle step
 const step = document.getElementById("privacyidea-step").content;
 
 if (step > "1")
@@ -70,6 +71,18 @@ if (step > "1")
     disable("otp");
     disable("message");
     disable("AlternateLoginOptions");
+}
+
+// Handle separate OTP field
+if (document.getElementById("privacyidea-separate-otp").content === "true")
+{
+    enable("otp");
+}
+
+// Hide pass field if redundant
+if (document.getElementById("privacyidea-hide-pass-field").content === "true")
+{
+    disable("password");
 }
 
 // Set alternate token button visibility
@@ -95,7 +108,7 @@ if (value("otpAvailable") !== "1")
 
 if (value("pushAvailable") === "0" && value("webAuthnSignRequest") === "" && value("u2fSignRequest") === "")
 {
-    disable("alternateTokenDiv");
+    disable("AlternateLoginOptions");
 }
 
 if (value("mode") === "otp")
@@ -175,8 +188,8 @@ function doWebAuthn()
     try
     {
         const requestjson = JSON.parse(requestStr);
-
         const webAuthnSignResponse = window.pi_webauthn.sign(requestjson);
+
         webAuthnSignResponse.then((webauthnresponse) =>
         {
             const response = JSON.stringify(webauthnresponse);
@@ -252,8 +265,8 @@ function sign_u2f_request(signRequest)
     })
 }
 
-if (document.getElementById("privacyidea-hide-alternate").content == "true") {
-    document.getElementById("AlternateLoginOptions").classList.add("hidden");
+if (document.getElementById("privacyidea-hide-alternate").content === "true") {
+    disable("AlternateLoginOptions");
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {

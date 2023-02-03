@@ -1,6 +1,6 @@
 <?php
 
-//namespace PrivacyIDEA\PHPClient;
+//namespace PrivacyIdea\PHPClient;
 
 class PIResponse
 {
@@ -13,6 +13,12 @@ class PIResponse
     /* @var string TransactionID is used to reference the challenges contained in this response in later requests. */
     public $transactionID = "";
 
+    /* @var string QR Code to enroll a new token. */
+    public $image = "";
+
+    /* @var string Preferred mode in which client should work after triggering challenges. */
+    public $preferredClientMode = "";
+
     /* @var string Raw response in JSON format. */
     public $raw = "";
 
@@ -24,6 +30,9 @@ class PIResponse
 
     /* @var bool Value is true if the authentication was successful. */
     public $value = false;
+
+    /* @var string Authentication Status */
+    public $authenticationStatus = "";
 
     /* @var array Additional attributes of the user that can be sent by the server. */
     public $detailAndAttributes = array();
@@ -82,6 +91,50 @@ class PIResponse
         {
             $ret->transactionID = $map['detail']['transaction_id'];
         }
+        if (isset($map['detail']['image']))
+        {
+            $ret->image = $map['detail']['image'];
+        }
+        if (isset($map['detail']['preferred_client_mode']))
+        {
+            $pref = $map['detail']['preferred_client_mode'];
+            if ($pref === "poll")
+            {
+                $ret->preferredClientMode = "push";
+            }
+            elseif ($pref === "interactive")
+            {
+                $ret->preferredClientMode = "otp";
+            }
+            else
+            {
+                $ret->preferredClientMode = $map['detail']['preferred_client_mode'];
+            }
+        }
+
+        // Check that the authentication status is one of the allowed ones
+        $r = null;
+        if (!empty($map['result']['authentication']))
+        {
+            $r = $map['result']['authentication'];
+        }
+        if ($r === AuthenticationStatus::CHALLENGE)
+        {
+            $ret->authenticationStatus = AuthenticationStatus::CHALLENGE;
+        }
+        elseif ($r === AuthenticationStatus::ACCEPT)
+        {
+            $ret->authenticationStatus = AuthenticationStatus::ACCEPT;
+        }
+        elseif ($r === AuthenticationStatus::REJECT)
+        {
+            $ret->authenticationStatus = AuthenticationStatus::REJECT;
+        }
+        else
+        {
+            $privacyIDEA->debugLog("Unknown authentication status");
+            $ret->authenticationStatus = AuthenticationStatus::NONE;
+        }
         $ret->status = $map['result']['status'] ?: false;
         $ret->value = $map['result']['value'] ?: false;
 
@@ -110,9 +163,17 @@ class PIResponse
                 $tmp->message = $challenge['message'];
                 $tmp->serial = $challenge['serial'];
                 $tmp->type = $challenge['type'];
+                if (isset($challenge['image']))
+                {
+                    $tmp->image = $challenge['image'];
+                }
                 if (isset($challenge['attributes']))
                 {
                     $tmp->attributes = $challenge['attributes'];
+                }
+                if (isset($challenge['client_mode']))
+                {
+                    $tmp->clientMode = $challenge['client_mode'];
                 }
 
                 if ($tmp->type === "webauthn")
@@ -120,14 +181,13 @@ class PIResponse
                     $t = $challenge['attributes']['webAuthnSignRequest'];
                     $tmp->webAuthnSignRequest = json_encode($t);
                 }
-
                 if ($tmp->type === "u2f")
                 {
                     $t = $challenge['attributes']['u2fSignRequest'];
                     $tmp->u2fSignRequest = json_encode($t);
                 }
 
-                array_push($ret->multiChallenge, $tmp);
+                $ret->multiChallenge[] = $tmp;
             }
         }
         return $ret;
@@ -142,7 +202,7 @@ class PIResponse
         $ret = array();
         foreach ($this->multiChallenge as $challenge)
         {
-            array_push($ret, $challenge->type);
+            $ret[] = $challenge->type;
         }
         return array_unique($ret);
     }
@@ -155,12 +215,12 @@ class PIResponse
     {
         foreach ($this->multiChallenge as $challenge)
         {
-            if ($challenge->type !== "push" && $challenge->type !== "webauthn")
+            if ($challenge->type !== "push" && $challenge->type !== "webauthn" && $challenge->type !== "u2f")
             {
                 return $challenge->message;
             }
         }
-        return false;
+        return "";
     }
 
     /**
@@ -242,5 +302,21 @@ class PIResponse
             }
         }
         return $ret;
+    }
+
+    /**
+     * Get the WebAuthn token message if any were triggered.
+     * @return string
+     */
+    public function u2fMessage()
+    {
+        foreach ($this->multiChallenge as $challenge)
+        {
+            if ($challenge->type === "u2f")
+            {
+                return $challenge->message;
+            }
+        }
+        return "";
     }
 }

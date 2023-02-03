@@ -1,7 +1,7 @@
 <?php
 
-require_once((dirname(__FILE__, 2)) . '/php-client/src/Client-Autoloader.php');
 require_once('PILogger.php');
+require_once((dirname(__FILE__, 2)) . '/php-client/src/Client-Autoloader.php');
 
 class sspmod_privacyidea_Auth_Utils
 {
@@ -289,36 +289,80 @@ class sspmod_privacyidea_Auth_Utils
 
         if (!empty($response->multiChallenge))
         {
-            // Authentication not complete, new challenges where triggered. Prepare the state for the next step
-            $triggeredToken = $response->triggeredTokenTypes();
-            // Preferred token type
-            if ($config !== null && array_key_exists("preferredTokenType", $config))
+            // Authentication not complete, new challenges were triggered. Prepare the state for the next step.
+            $triggeredTokens = $response->triggeredTokenTypes();
+            if (!empty($response->preferredClientMode))
+            {
+                if ($response->preferredClientMode === "interactive")
+                {
+                    $state['privacyidea:privacyidea:ui']['mode'] = "otp";
+                }
+                elseif ($response->preferredClientMode === "poll")
+                {
+                    $state['privacyidea:privacyidea:ui']['mode'] = "push";
+                }
+                else
+                {
+                    $state['privacyidea:privacyidea:ui']['mode'] = $response->preferredClientMode;
+                }
+                SimpleSAML_Logger::debug("privacyIDEA: Preferred client mode: " . $state['privacyidea:privacyidea:ui']['mode']);
+            }
+            elseif ($config !== null && array_key_exists("preferredTokenType", $config))
             {
                 $preferred = $config['preferredTokenType'];
                 if (!empty($preferred))
                 {
-                    if (in_array($preferred, $triggeredToken))
+                    // Specify the allowed values
+                    $allowedTypes = array("otp", "push", "webauthn", "u2f");
+                    if (in_array($preferred, $allowedTypes) && in_array($preferred, $triggeredTokens))
                     {
                         $state['privacyidea:privacyidea:ui']['mode'] = $preferred;
+                        SimpleSAML_Logger::debug("privacyIDEA: Preferred token type: " . $state['privacyidea:privacyidea:ui']['mode']);
                     }
+                    SimpleSAML_Logger::debug("privacyIDEA: Preferred token type - illegal value. Fallback to default: " . $state['privacyidea:privacyidea:ui']['mode']);
                 }
             }
-
+            
             $state['privacyidea:privacyidea:ui']['pushAvailable'] = in_array("push", $triggeredToken);
-            $state['privacyidea:privacyidea:ui']['otpAvailable'] = true; // Always show otp field
+            $state['privacyidea:privacyidea:ui']['otpAvailable'] = true;
+            
             $state['privacyidea:privacyidea:ui']['message'] = $response->messages;
 
-            if (in_array("webauthn", $triggeredToken))
+            if (in_array("webauthn", $triggeredTokens))
             {
                 $state['privacyidea:privacyidea:ui']['webAuthnSignRequest'] = $response->webAuthnSignRequest();
             }
 
-            if (in_array("u2f", $triggeredToken))
+            if (in_array("u2f", $triggeredTokens))
             {
                 $state['privacyidea:privacyidea:ui']['u2fSignRequest'] = $response->u2fSignRequest();
             }
 
             $state['privacyidea:privacyidea']['transactionID'] = $response->transactionID;
+
+            // Search for the image
+            foreach ($response->multiChallenge as $challenge)
+            {
+                if (!empty($challenge->image))
+                {
+                    if (!empty($challenge->clientMode) && $challenge->clientMode === "interactive")
+                    {
+                        $state['privacyidea:privacyidea:ui']['imageOTP'] = $challenge->image;
+                    }
+                    elseif (!empty($challenge->clientMode) && $challenge->clientMode === "poll")
+                    {
+                        $state['privacyidea:privacyidea:ui']['imagePush'] = $challenge->image;
+                    }
+                    elseif (!empty($challenge->clientMode) && $challenge->clientMode === "u2f")
+                    {
+                        $state['privacyidea:privacyidea:ui']['imageU2F'] = $challenge->image;
+                    }
+                    elseif (!empty($challenge->clientMode) && $challenge->clientMode === "webauthn")
+                    {
+                        $state['privacyidea:privacyidea:ui']['imageWebauthn'] = $challenge->image;
+                    }
+                }
+            }
         }
         elseif ($response->value)
         {
@@ -330,7 +374,7 @@ class sspmod_privacyidea_Auth_Utils
             if ($state['privacyidea:privacyidea']['authenticationMethod'] === "authprocess")
             {
                 // Write data for SSO if enabled
-                if (array_key_exists('SSO', $config) && $config['SSO'] == true)
+                if (array_key_exists('SSO', $config) && $config['SSO'])
                 {
                     sspmod_privacyidea_Auth_Utils::tryWriteSSO();
                 }
