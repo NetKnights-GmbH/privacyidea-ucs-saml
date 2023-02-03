@@ -6,8 +6,8 @@ entity_id = configRegistry.get('saml/idp/entityID',
 
 # Here default values are defined
 privacyideaServerURL = configRegistry.get('privacyidea/saml/privacyideaServerURL', 'https://privacyidea')
-verifyHost = configRegistry.get('privacyidea/saml/verifyHost', 'true')
-verifyPeer = configRegistry.get('privacyidea/saml/verifyPeer', 'true')
+sslVerifyHost = configRegistry.get('privacyidea/saml/sslVerifyHost', 'true')
+sslVerifyPeer = configRegistry.get('privacyidea/saml/sslVerifyPeer', 'true')
 enabledPath = configRegistry.get('privacyidea/saml/enabledPath', 'privacyIDEA')
 enabledKey = configRegistry.get('privacyidea/saml/enabledKey', 'enabled')
 authenticationFlow = configRegistry.get('privacyidea/saml/authenticationFlow', 'default')
@@ -44,8 +44,8 @@ elif enabled == 'authproc':
         'privacyideaServerURL' => '{privacyideaServerURL}',
         'realm' => '{realm}',
         'uidKey' => '{uidKey}',
-        'sslVerifyHost' => '{verifyHost}',
-        'sslVerifyPeer' => '{verifyPeer}',
+        'sslVerifyHost' => '{sslVerifyHost}',
+        'sslVerifyPeer' => '{sslVerifyPeer}',
         'enabledPath' => '{enabledPath}',
         'enabledKey' => '{enabledKey}',
         'authenticationFlow' => '{authenticationFlow}',
@@ -58,7 +58,7 @@ elif enabled == 'authproc':
         'tokenType' => '{tokenType}',
         'tryFirstAuthentication' => '{tryFirstAuthentication}',
         'tryFirstAuthPass' => '{tryFirstAuthPass}',
-""".format(privacyideaServerURL=privacyideaServerURL, realm=realm, uidKey=uidKey, verifyHost=verifyHost.lower(), verifyPeer=verifyPeer.lower(),
+""".format(privacyideaServerURL=privacyideaServerURL, realm=realm, uidKey=uidKey, sslVerifyHost=sslVerifyHost.lower(), sslVerifyPeer=sslVerifyPeer.lower(),
             enabledPath=enabledPath, enabledKey=enabledKey, authenticationFlow=authenticationFlow,
             serviceAccount=serviceAccount, servicePass=servicePass,
             otpFieldHint=otpFieldHint, SSO=SSO.lower(), preferredTokenType=preferredTokenType,
