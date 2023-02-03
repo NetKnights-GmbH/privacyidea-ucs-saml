@@ -1,28 +1,26 @@
 // privacyIDEA authsource
 @!@
-url = configRegistry.get('privacyidea/saml/url', 'https://privacyidea')
+privacyideaServerURL = configRegistry.get('privacyidea/saml/privacyideaServerURL', 'https://privacyidea')
 realm = configRegistry.get('privacyidea/saml/realm', '')
-verifyhost = configRegistry.get('privacyidea/saml/verifyhost', 'true')
-verifypeer = configRegistry.get('privacyidea/saml/verifypeer', 'true')
-doTriggerChallenge = configRegistry.get('privacyidea/saml/doTriggerChallenge', 'false')
-serviceAccount = configRegistry.get('privacyidea/saml/serviceAccount', 'service')
-servicePass = configRegistry.get('privacyidea/saml/servicePass', 'service')
-doSendPassword = configRegistry.get('privacyidea/saml/doSendPassword', 'false')
-otpFieldHint = configRegistry.get('privacyidea/saml/otpFieldHint', 'Please enter OTP')
-passFieldHint = configRegistry.get('privacyidea/saml/passFieldHint', 'Please enter password')
+sslVerifyHost = configRegistry.get('privacyidea/saml/sslVerifyHost', 'true')
+sslVerifyPeer = configRegistry.get('privacyidea/saml/sslVerifyPeer', 'true')
+authenticationFlow = configRegistry.get('privacyidea/saml/authenticationFlow', 'sendPass')
+serviceAccount = configRegistry.get('privacyidea/saml/serviceAccount', '')
+servicePass = configRegistry.get('privacyidea/saml/servicePass', '')
+otpFieldHint = configRegistry.get('privacyidea/saml/otpFieldHint', 'Please enter the OTP')
+passFieldHint = configRegistry.get('privacyidea/saml/passFieldHint', 'Please enter the Password')
 SSO = configRegistry.get('privacyidea/saml/SSO', 'false')
 preferredTokenType = configRegistry.get('privacyidea/saml/preferredTokenType', 'otp')
 print("""
 $config['privacyidea'] = array(
                 'privacyidea:PrivacyideaAuthSource',
-                'privacyideaServerURL' => '{url}',
-                'sslVerifyHost' => {verifyhost},
-                'sslVerifyPeer' => {verifypeer},
+                'privacyideaServerURL' => '{privacyideaServerURL}',
+                'sslVerifyHost' => {sslVerifyHost},
+                'sslVerifyPeer' => {sslVerifyPeer},
                 'realm' => '{realm}',
-                'doTriggerChallenge' => '{doTriggerChallenge}',
+                'authenticationFlow' => '{authenticationFlow}',
                 'serviceAccount' => '{serviceAccount}',
                 'servicePass' => '{servicePass}',
-                'doSendPassword' => '{doSendPassword}',
                 'otpFieldHint' => '{otpFieldHint}',
                 'passFieldHint' => '{passFieldHint}',
                 'SSO' => '{SSO}',
@@ -34,8 +32,8 @@ $config['privacyidea'] = array(
                                         'phone' => 'telePhone',
                                         'mobile' => 'mobilePhone'),
 		);
-""".format(url=url, verifyhost=verifyhost.lower(), verifypeer=verifypeer.lower(), realm=realm,
-            doTriggerChallenge=doTriggerChallenge, serviceAccount=serviceAccount, servicePass=servicePass,
-            doSendPassword=doSendPassword, otpFieldHint=otpFieldHint, passFieldHint=passFieldHint,
+""".format(privacyideaServerURL=privacyideaServerURL, sslVerifyHost=sslVerifyHost.lower(), sslVerifyPeer=sslVerifyPeer.lower(), realm=realm,
+authenticationFlow=authenticationFlow, serviceAccount=serviceAccount, servicePass=servicePass,
+            otpFieldHint=otpFieldHint, passFieldHint=passFieldHint,
             SSO=SSO.lower(), preferredTokenType=preferredTokenType))
 @!@
