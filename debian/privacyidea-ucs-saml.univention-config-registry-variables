@@ -1,42 +1,42 @@
 [privacyidea/saml/privacyideaServerURL]
-Description[en]=The URL of the privacyIDEA system, e.g. "https://yourserver"
-Description[de]=Die URL des privacyIDEA Sytems. Bspw "https://IhrServer"
+Description[en]=The URL of the privacyIDEA. E.g. "https://privacyidea.yourserver.com"
+Description[de]=Die URL von privacyIDEA. Bspw. "https://privacyidea.yourserver.com"
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/realm]
 Description[en]=The realm, the users should authenticate in.
-Description[de]=Der Realm, in dem sich die Benutzer anmelden.
+Description[de]=Der realm, in dem sich die Benutzer anmelden.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/uidKey]
-Description[en]=Sets the key where the username is given, e.g. "uid"
-Description[de]=Setze den Key, in dem der Benutzername übergeben wird, bspw "uid"
+Description[en]=Sets the key where the username is given, e.g. "uid".
+Description[de]=Setzt den Schlüssel, in dem der Benutzername übergeben wird, bspw. "uid".
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/sslVerifyHost]
-Description[en]=If the hostname should be verifies (true or false)
-Description[de]=Ob der Hostname überprüft werden soll (true oder false)
+Description[en]=If the hostname should be verified (true or false).
+Description[de]=Ob der Hostname überprüft werden soll (true oder false).
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/sslVerifyPeer]
-Description[en]=If the certificate should be verifies (true or false)
-Description[de]=Ob das Zertifikat überprüft werden soll (true oder false)
+Description[en]=If the certificate should be verified (true or false).
+Description[de]=Ob das Zertifikat überprüft werden soll (true oder false).
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/enable]
-Description[en]=Enable 2FA for SAML as authsource (set "authsource"),  as authproc (set "authproc")
-Description[de]=Zwei-Faktor für SAML aktivieren. Als Authsource (setze "authsource"), als Authproc (setze "authproc")
+Description[en]=Enable 2FA for SAML. Can be "authproc" or "authsource". "authproc" is recommended.
+Description[de]=Zwei-Faktor für SAML aktivieren. Kann "authproc" oder "authsource" sein. "authproc" wird empfohlen.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/staticPass]
-Description[en]=(optional) Specify the static password for the 'sendStaticPass' authentication flow.
-Description[de]=(Optional) Geben Sie der statisches Password für die 'sendStaticPass' Authentication-Flow.
+Description[en]=(optional) Static password for the 'sendStaticPass' authentication flow.
+Description[de]=(Optional) Statisches Password für den 'sendStaticPass' Authentication-Flow.
 Type=str
 Categories=privacyidea
 
@@ -54,49 +54,49 @@ Categories=privacyidea
 
 [privacyidea/saml/serviceRealm]
 Description[en]=(optional) Enter the realm for your service account.
-Description[de]=(Optional) Geben Sie das Realm für Ihr Servicekonto ein.
+Description[de]=(Optional) Geben Sie den realm für Ihr Servicekonto ein.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/authenticationFlow]
 Description[en]=(Required) Choose the authentication flow. Available authproc flows: 'default', 'sendStaticPass', 'triggerChallenge'. Available authsource flows: 'sendPassword', 'triggerChallenge', 'separateOTP'.
-Description[de]=(Optional) Wählen Sie die gewünschte Authentication-Flow. Verfügbare Flows für die Authproc: 'default', 'sendStaticPass', 'triggerChallenge'. Verfügbare Flows für die Authsource: 'sendPassword', 'triggerChallenge', 'separateOTP'.
+Description[de]=(Optional) Wählen Sie die gewünschte Authentication-Flow. Verfügbare flows für authproc: 'default', 'sendStaticPass', 'triggerChallenge'. Verfügbare flows für authsource: 'sendPassword', 'triggerChallenge', 'separateOTP'.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/SSO]
-Description[en]=(optional) Set this to 'true' if you want to use the single sign-on.
-Description[de]=(Optional) Setzen Sie dies auf 'true', wenn Sie Single Sign-On verwenden möchten.
+Description[en]=(optional) Set this to 'true' if you want to use single sign-on.
+Description[de]=(Optional) Setzen Sie dies auf 'true', wenn Sie single sign-on verwenden möchten.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/preferredTokenType]
-Description[en]=(optional) Set preferredTokenType to token which should be set as default if triggered: webauthn, u2f, push, otp.
-Description[de]=(Optional) Legen Sie bevorzugten Token "preferredTokenType" fest, das als Standard ausgelöst wird: webauthn, u2f, push, otp.
+Description[en]=(optional) Set to the token type which should be used as default if triggered. Possible values: 'webauthn', 'u2f', 'push', 'otp'.
+Description[de]=(Optional) Legen Sie bevorzugten Tokentypen fest, der standardmäßig verwendet wird, wenn ausgelöst. Mögliche Werte: 'webauthn', 'u2f', 'push', 'otp'.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/otpFieldHint]
-Description[en]=(optional) Set custom hints for the OTP field.
-Description[de]=(Optional) Legen Sie benutzerdefinierte Hinweise für das OTP-Feld fest.
+Description[en]=(optional) Hint text for the OTP field.
+Description[de]=(Optional) Hinweistext für das OTP-Feld fest.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/passFieldHint]
-Description[en]=(optional) Set custom hints for the password field.
-Description[de]=(Optional) Benutzerdefinierte Hinweise für das Kennwortfeld festlegen.
+Description[en]=(optional) Hint text for the password field.
+Description[de]=(Optional) Hinweistext für das Kennwortfeld.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/doEnrollToken]
-Description[en]=(optional) You can add this option, if you want to enroll tokens for users, who do not have one yet.
-Description[de]=(Optional) Sie können diese Option hinzufügen, wenn Sie Token für Benutzer registrieren möchten, die noch keine haben.
+Description[en]=(optional) Set to 'true' to enroll token for users, that do not have one yet.
+Description[de]=(Optional) Auf 'true' setzen, um token für Benutzer auszurollen, die noch keine haben.
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/typeOfTokenToEnroll]
-Description[en]=(optional) You can select a time based otp (totp), an event based otp (hotp) or an u2f (u2f) to enroll.
-Description[de]=(Optional) Sie können ein zeitbasiertes otp (totp), ein ereignisbasiertes otp (hotp) oder ein u2f (u2f) für die Anmeldung auswählen.
+Description[en]=(optional) Set the type of token that should be enrolled. Possible values: 'hotp', 'totp', 'u2f'.
+Description[de]=(Optional) Tokentyp der ausgerollt werden soll. Mögliche Werte: 'hotp', 'totp', 'u2f'.
 Type=str
 Categories=privacyidea
 
@@ -119,8 +119,8 @@ Type=str
 Categories=privacyidea
 
 [privacyidea/saml/checkEntityID]
-Description[en]=(optional) You can exclude clients with specified ip addresses from 2FA. If there is a match, the filter will set the specified state variable to false and thereby disables privacyIDEA for this entityID.
-Description[de]=(Optional) Sie können Clients mit bestimmten IP-Adressen von 2FA ausschließen. Wenn es eine Übereinstimmung gibt, setzt der Filter die angegebene Statusvariable auf false und deaktiviert damit privacyIDEA für diese EntityID.
+Description[en]=(optional) Set to 'true' if you want to disable 2FA for certain entityIDs. Additionally excludeEntityIDs has to be configured.
+Description[de]=(Optional) Auf 'true' setzen, um bestimmte entityIDs von 2FA auszuschließen. Außerdem muss excludeEntityIDs konfiguriert werden.
 Type=str
 Categories=privacyidea
 
