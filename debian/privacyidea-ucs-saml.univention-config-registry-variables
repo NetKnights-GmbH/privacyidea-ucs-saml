@@ -1,4 +1,4 @@
-[privacyidea/saml/url]
+[privacyidea/saml/privacyideaServerURL]
 Description[en]=The URL of the privacyIDEA system, e.g. "https://yourserver"
 Description[de]=Die URL des privacyIDEA Sytems. Bspw "https://IhrServer"
 Type=str
@@ -10,13 +10,19 @@ Description[de]=Der Realm, in dem sich die Benutzer anmelden.
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/verifyhost]
+[privacyidea/saml/uidKey]
+Description[en]=Sets the key where the username is given, e.g. "uid"
+Description[de]=Setze den Key, in dem der Benutzername übergeben wird, bspw "uid"
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/sslVerifyHost]
 Description[en]=If the hostname should be verifies (true or false)
 Description[de]=Ob der Hostname überprüft werden soll (true oder false)
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/verifypeer]
+[privacyidea/saml/sslVerifyPeer]
 Description[en]=If the certificate should be verifies (true or false)
 Description[de]=Ob das Zertifikat überprüft werden soll (true oder false)
 Type=str
@@ -28,15 +34,9 @@ Description[de]=Zwei-Faktor für SAML aktivieren. Als Authsource (setze "authsou
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/uidkey]
-Description[en]=Sets the key where the username is given, e.g. "uid"
-Description[de]=Setze den Key, in dem der Benutzername übergeben wird, bspw "uid"
-Type=str
-Categories=privacyidea
-
-[privacyidea/saml/doTriggerChallenge]
-Description[en]=(optional) You can enable or disable trigger challenge.
-Description[de]=(Optional) Sie können die Trigger Challenge aktivieren oder deaktivieren.
+[privacyidea/saml/staticPass]
+Description[en]=(optional) Specify the static password for the 'sendStaticPass' authentication flow.
+Description[de]=(Optional) Geben Sie der statisches Password für die 'sendStaticPass' Authentication-Flow.
 Type=str
 Categories=privacyidea
 
@@ -52,9 +52,27 @@ Description[de]=(Optional) Geben Sie das Passwort für Ihr Servicekonto ein.
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/doSendPassword]
-Description[en]=(optional) Set doSendPassword to 'true' to send a request to validate/check with the username and an empty pass prior to the login.
-Description[de]=(Optional) Setzen Sie doSendPassword auf 'true', um eine Anfrage zu validate/check mit dem Benutzernamen und einem leeren Passwort vor der Anmeldung zu senden.
+[privacyidea/saml/serviceRealm]
+Description[en]=(optional) Enter the realm for your service account.
+Description[de]=(Optional) Geben Sie das Realm für Ihr Servicekonto ein.
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/authenticationFlow]
+Description[en]=(Required) Choose the authentication flow. Available authproc flows: 'default', 'sendStaticPass', 'triggerChallenge'. Available authsource flows: 'sendPassword', 'triggerChallenge', 'separateOTP'.
+Description[de]=(Optional) Wählen Sie die gewünschte Authentication-Flow. Verfügbare Flows für die Authproc: 'default', 'sendStaticPass', 'triggerChallenge'. Verfügbare Flows für die Authsource: 'sendPassword', 'triggerChallenge', 'separateOTP'.
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/SSO]
+Description[en]=(optional) Set this to 'true' if you want to use the single sign-on.
+Description[de]=(Optional) Setzen Sie dies auf 'true', wenn Sie Single Sign-On verwenden möchten.
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/preferredTokenType]
+Description[en]=(optional) Set preferredTokenType to token which should be set as default if triggered: webauthn, u2f, push, otp.
+Description[de]=(Optional) Legen Sie bevorzugten Token "preferredTokenType" fest, das als Standard ausgelöst wird: webauthn, u2f, push, otp.
 Type=str
 Categories=privacyidea
 
@@ -70,43 +88,37 @@ Description[de]=(Optional) Benutzerdefinierte Hinweise für das Kennwortfeld fes
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/SSO]
-Description[en]=(optional) Set this to 'true' if you want to use single sign on.
-Description[de]=(Optional) Setzen Sie dies auf 'true', wenn Sie Single Sign On verwenden möchten.
-Type=str
-Categories=privacyidea
-
-[privacyidea/saml/preferredTokenType]
-Description[en]=(optional) Set preferredTokenType to token which should be set as default if triggered: webauthn, u2f, push, otp.
-Description[de]=(Optional) Legen Sie bevorzugten Token "preferredTokenType" fest, das als Standard ausgelöst wird: webauthn, u2f, push, otp.
-Type=str
-Categories=privacyidea
-
 [privacyidea/saml/doEnrollToken]
 Description[en]=(optional) You can add this option, if you want to enroll tokens for users, who do not have one yet.
 Description[de]=(Optional) Sie können diese Option hinzufügen, wenn Sie Token für Benutzer registrieren möchten, die noch keine haben.
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/tokenType]
+[privacyidea/saml/typeOfTokenToEnroll]
 Description[en]=(optional) You can select a time based otp (totp), an event based otp (hotp) or an u2f (u2f) to enroll.
 Description[de]=(Optional) Sie können ein zeitbasiertes otp (totp), ein ereignisbasiertes otp (hotp) oder ein u2f (u2f) für die Anmeldung auswählen.
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/tryFirstAuthentication]
-Description[en]=(optional) If you want to use passOnNoToken or passOnNoUser, you can decide, if this module should send a password to privacyIDEA.
-Description[de]=(Optional) Wenn Sie passOnNoToken oder passOnNoUser verwenden wollen, können Sie entscheiden, ob dieses Modul ein Passwort an privacyIDEA senden soll.
+[privacyidea/saml/enabledPath]
+Description[en]=See documentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
+Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/tryFirstAuthPass]
-Description[en]=(optional) You can decide, which password should be used for tryFirstAuthentication.
-Description[de]=(Optional) Sie können entscheiden, welches Passwort für tryFirstAuthentication verwendet werden soll.
+[privacyidea/saml/enabledKey]
+Description[en]=See documentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
+Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
 Type=str
 Categories=privacyidea
 
 [privacyidea/saml/excludeClientIPs]
+Description[en]=(optional) You can exclude clients with specified ip addresses from 2FA. If there is a match, the filter will set the specified state variable to false and thereby disables privacyIDEA for this entityID.
+Description[de]=(Optional) Sie können Clients mit bestimmten IP-Adressen von 2FA ausschließen. Wenn es eine Übereinstimmung gibt, setzt der Filter die angegebene Statusvariable auf false und deaktiviert damit privacyIDEA für diese EntityID.
+Type=str
+Categories=privacyidea
+
+[privacyidea/saml/checkEntityID]
 Description[en]=(optional) You can exclude clients with specified ip addresses from 2FA. If there is a match, the filter will set the specified state variable to false and thereby disables privacyIDEA for this entityID.
 Description[de]=(Optional) Sie können Clients mit bestimmten IP-Adressen von 2FA ausschließen. Wenn es eine Übereinstimmung gibt, setzt der Filter die angegebene Statusvariable auf false und deaktiviert damit privacyIDEA für diese EntityID.
 Type=str
@@ -124,14 +136,3 @@ Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp
 Type=str
 Categories=privacyidea
 
-[privacyidea/saml/setPath]
-Description[en]=See documentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
-Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
-Type=str
-Categories=privacyidea
-
-[privacyidea/saml/setKey]
-Description[en]=See documentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
-Description[de]=Siehe Dokumentation https://github.com/privacyidea/simplesamlphp-module-privacyidea/blob/master/docs/privacyidea.md/
-Type=str
-Categories=privacyidea
