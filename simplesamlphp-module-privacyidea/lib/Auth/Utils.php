@@ -136,7 +136,12 @@ class sspmod_privacyidea_Auth_Utils
         return $response;
     }
 
-    public static function handlePrivacyIDEAException($exception, &$state)
+    /**
+     * @param $exception
+     * @param array $state
+     * @return void
+     */
+    public static function handlePrivacyIDEAException($exception, array &$state)
     {
         SimpleSAML_Logger::error("Exception: " . $exception->getMessage());
         $state['privacyidea:privacyidea']['errorCode'] = $exception->getCode();
@@ -182,17 +187,17 @@ class sspmod_privacyidea_Auth_Utils
      * module is present, indicating that 2FA was completed before.
      * A boolean is returned to indicate if the login/2FA can be skipped.
      *
-     * @param $state
+     * @param array $state
      * @return boolean true if login/2FA can be skipped, false if not
      */
-    public static function checkForValidSSO($state)
+    public static function checkForValidSSO(array $state): bool
     {
         SimpleSAML_Logger::debug("privacyIDEA: checkForValidSSO");
 
         // For SSO to be valid, we check 2 things:
         // 1. Valid login of SSP which is not expired
         // 2. Completed 2FA with this module
-        if (is_array($state) && array_key_exists('Expire', $state) && $state['Expire'] > time())
+        if (array_key_exists('Expire', $state) && $state['Expire'] > time())
         {
             SimpleSAML_Logger::debug("privacyIDEA: Valid login found. Checking for valid 2FA..");
             $session = SimpleSAML_Session::getSessionFromRequest();
@@ -224,7 +229,7 @@ class sspmod_privacyidea_Auth_Utils
      * @param array $config
      * @return PrivacyIDEA|null privacyIDEA object or null on error
      */
-    public static function createPrivacyIDEAInstance($config)
+    public static function createPrivacyIDEAInstance(array $config)
     {
         if (!empty($config['privacyideaServerURL']))
         {
@@ -280,7 +285,7 @@ class sspmod_privacyidea_Auth_Utils
      * @return string stateId of the modified state
      * @throws Exception|SimpleSAML_Error_Exception
      */
-    public static function processPIResponse($stateId, PIResponse $response)
+    public static function processPIResponse(string $stateId, PIResponse $response): string
     {
         assert('string' === gettype($stateId));
         $state = SimpleSAML_Auth_State::loadState($stateId, 'privacyidea:privacyidea', true);
@@ -425,7 +430,7 @@ class sspmod_privacyidea_Auth_Utils
      * @param array $state The global state to check the keys against
      * @return array The updated config
      */
-    public static function checkUidKey(array $config, array $state)
+    public static function checkUidKey(array $config, array $state): array
     {
         assert('array' === gettype($config));
         assert('array' === gettype($state));
