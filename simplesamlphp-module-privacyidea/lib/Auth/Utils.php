@@ -150,6 +150,7 @@ class sspmod_privacyidea_Auth_Utils
      * that is used can be considered valid.
      *
      * @return void
+     * @throws Exception
      */
     public static function tryWriteSSO()
     {
@@ -277,12 +278,12 @@ class sspmod_privacyidea_Auth_Utils
      * @param string $stateId to load the state
      * @param mixed $response from privacyIDEA
      * @return string stateId of the modified state
-     * @throws Exception
+     * @throws Exception|SimpleSAML_Error_Exception
      */
     public static function processPIResponse($stateId, PIResponse $response)
     {
         assert('string' === gettype($stateId));
-        $state = SimpleSAML_Auth_State::loadState($stateId, 'privacyidea:privacyidea');
+        $state = SimpleSAML_Auth_State::loadState($stateId, 'privacyidea:privacyidea', true);
 
         $config = $state['privacyidea:privacyidea'];
         $state['privacyidea:privacyidea:ui']['mode'] = "otp";
