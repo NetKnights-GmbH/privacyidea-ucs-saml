@@ -52,6 +52,7 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
      * Constructor for this authentication source.
      * @param array $info Information about this authentication source.
      * @param array $config Configuration set in authsources.php
+     * @throws SimpleSAML_Error_ConfigurationError
      */
     public function __construct(array $info, array $config)
     {
@@ -86,7 +87,8 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
      * This function saves the information about the login, and redirects to the login page.
      *
      * @override
-     * @param array &$state Information about the current authentication.
+     * @param &$state
+     * @throws Exception
      */
     public function authenticate(&$state)
     {
@@ -137,7 +139,7 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
         $stateId = SimpleSAML_Auth_State::saveState($state, 'privacyidea:privacyidea');
 
         $url = SimpleSAML_Module::getModuleURL('privacyidea/FormBuilder.php');
-        SimpleSAML_Utilities::redirectTrustedURL($url, array('stateId' => $stateId));
+        SimpleSAML_Utils_HTTP::redirectTrustedURL($url, array('stateId' => $stateId));
     }
 
     /**
@@ -146,7 +148,7 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
      * @param string $username The username the user wrote.
      * @param string $password The password the user wrote.
      */
-    protected function login($username, $password)
+    protected function login(string $username, string $password)
     {
         // Stub.
         SimpleSAML_Logger::debug("privacyIDEA AuthSource login stub");
@@ -159,12 +161,12 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
      * @param array $formParams
      * @throws Exception
      */
-    public static function authSourceLogin($stateId, $formParams)
+    public static function authSourceLogin(string $stateId, array $formParams)
     {
         assert('array' === gettype($stateId));
         assert('array' === gettype($formParams));
 
-        $state = SimpleSAML_Auth_State::loadState($stateId, 'privacyidea:privacyidea');
+        $state = SimpleSAML_Auth_State::loadState($stateId, 'privacyidea:privacyidea', true);
         $step = $state['privacyidea:privacyidea:ui']['step'];
 
         $source = SimpleSAML_Auth_Source::getById($state['privacyidea:privacyidea']["AuthId"]);
@@ -273,7 +275,7 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
             $stateId = sspmod_privacyidea_Auth_Utils::processPIResponse($stateId, $response);
         }
 
-        $state = SimpleSAML_Auth_State::loadState($stateId, 'privacyidea:privacyidea');
+        $state = SimpleSAML_Auth_State::loadState($stateId, 'privacyidea:privacyidea', true);
 
         // Increase steps counter
         if (empty($state['privacyidea:privacyidea']['errorMessage']))
@@ -284,7 +286,7 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
         //SimpleSAML_Logger::error("NEW STEP: " . $state['privacyidea:privacyidea:ui']['step']);
         $stateId = SimpleSAML_Auth_State::saveState($state, 'privacyidea:privacyidea');
         $url = SimpleSAML_Module::getModuleURL('privacyidea/FormBuilder.php');
-        SimpleSAML_Utilities::redirectTrustedURL($url, array('stateId' => $stateId));
+        SimpleSAML_Utils_HTTP::redirectTrustedURL($url, array('stateId' => $stateId));
     }
 
     /**
@@ -295,9 +297,9 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
      *
      * @param array $state
      * @param PIResponse $piResponse
-     * @param $authSourceConfig
+     * @param array $authSourceConfig
      */
-    public static function checkAuthenticationComplete($state, PIResponse $piResponse, $authSourceConfig)
+    public static function checkAuthenticationComplete(array $state, PIResponse $piResponse, array $authSourceConfig)
     {
         $attributes = $piResponse->detailAndAttributes;
 
@@ -329,12 +331,12 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
     /**
      * This function merge all attributes and detail which SimpleSAMLphp needs.
      *
-     * @param $userAttributes
-     * @param $detailAttributes
-     * @param $authSourceConfig
+     * @param array $userAttributes
+     * @param array $detailAttributes
+     * @param array $authSourceConfig
      * @return array
      */
-    protected static function mergeAttributes($userAttributes, $detailAttributes, $authSourceConfig)
+    protected static function mergeAttributes(array $userAttributes, array $detailAttributes, array $authSourceConfig): array
     {
         // Prepare attributes array to return
         $attributes = array();
@@ -398,6 +400,7 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
      * the session after performing the standard login.
      *
      * @param array $state The state after the login has completed.
+     * @throws Exception
      */
     public static function loginCompletedWriteSSO(array $state)
     {
@@ -434,14 +437,14 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
 
     /**
      * Check if url is allowed.
-     * @param $id
+     * @param string $stateID
      */
-    private static function checkIdLegality($id)
+    private static function checkIdLegality(string $stateID)
     {
-        $sid = SimpleSAML_Utilities::parseStateID($id);
+        $sid = SimpleSAML_Auth_State::parseStateID($stateID);
         if (!is_null($sid['url']))
         {
-            SimpleSAML_Utilities::checkURLAllowed($sid['url']);
+            SimpleSAML_Utils_HTTP::checkURLAllowed($sid['url']);
         }
     }
 }
