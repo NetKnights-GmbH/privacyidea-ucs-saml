@@ -13,7 +13,7 @@ class sspmod_privacyidea_Auth_Utils
      * @return PIResponse|null An array containing attributes and detail, or NULL.
      * @throws Exception
      */
-    public static function authenticatePI(array &$state, array $formParams)
+    public static function authenticatePI(array &$state, array $formParams): ?PIResponse
     {
         assert('array' === gettype($state));
         assert('array' === gettype($formParams));
@@ -229,7 +229,7 @@ class sspmod_privacyidea_Auth_Utils
      * @param array $config
      * @return PrivacyIDEA|null privacyIDEA object or null on error
      */
-    public static function createPrivacyIDEAInstance(array $config)
+    public static function createPrivacyIDEAInstance(array $config): ?PrivacyIDEA
     {
         if (!empty($config['privacyideaServerURL']))
         {
@@ -414,7 +414,7 @@ class sspmod_privacyidea_Auth_Utils
      * Determine the clients IP-Address.
      * @return string|null The IP-Address of the client.
      */
-    public static function getClientIP()
+    public static function getClientIP(): ?string
     {
         $result = @$_SERVER['HTTP_X_FORWARDED_FOR'] ?: @$_SERVER['REMOTE_ADDR'] ?: @$_SERVER['HTTP_CLIENT_IP'];
         SimpleSAML_Logger::debug('privacyIDEA: client ip: ' . $result);

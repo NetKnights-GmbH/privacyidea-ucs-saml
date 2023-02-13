@@ -148,7 +148,7 @@ class sspmod_privacyidea_Auth_Source_PrivacyideaAuthSource extends sspmod_core_A
      * @param string $username The username the user wrote.
      * @param string $password The password the user wrote.
      */
-    protected function login(string $username, string $password)
+    protected function login($username, $password)
     {
         // Stub.
         SimpleSAML_Logger::debug("privacyIDEA AuthSource login stub");
