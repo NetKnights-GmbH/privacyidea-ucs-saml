@@ -1,3 +1,16 @@
+privacyidea-ucs-saml (3.0.0-1) stretch; urgency=medium
+
+  * Simplified the configuration by introducing the Authentication Flow (#164, #166)
+    !!! Check the docs for the updated template of the configuration - the old configuration file does not work with the new version !!!
+  * Added implementation of the preferred client mode (#167)
+  * Added implementation of the token enrollment via challenge (#171)
+  * Used namespaces to communicate with simpleSAML core (#177)
+  * Fixed uncaught exceptions (#177, #185)
+  * Updated UI (#179)
+  * Add new Features #25
+
+ -- NetKnights GmbH <info@netknights.it>  Tue, 14 Feb 2023 10:00:00 +0200
+
 privacyidea-ucs-saml (2.1.3-1) stretch; urgency=medium
 
   * Add new Features #25
