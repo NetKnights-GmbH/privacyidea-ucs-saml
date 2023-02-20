@@ -14,7 +14,7 @@ DEFAULT_CONFFILES=conffiles-template
 VERSION_NUMBER=$(shell echo ${VERSION} | sed 's@^[^0-9\.]*\([0-9\.]\+\).*@\1@')
 
 select-conffiles:
-		cp -r ${DEFAULT_CONFFILES} conffiles
+	cp -r ${DEFAULT_CONFFILES} conffiles
 
 clean:
 	rm -fr conffiles
