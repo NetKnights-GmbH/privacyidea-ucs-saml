@@ -18,6 +18,7 @@ SSO = configRegistry.get('privacyidea/saml/SSO', 'false')
 preferredTokenType = configRegistry.get('privacyidea/saml/preferredTokenType', 'otp')
 doEnrollToken = configRegistry.get('privacyidea/saml/doEnrollToken', 'false')
 tokenType = configRegistry.get('privacyidea/saml/tokenType', '')
+typeOfTokenToEnroll = configRegistry.get('privacyidea/saml/typeOfTokenToEnroll', '')
 tryFirstAuthentication = configRegistry.get('privacyidea/saml/tryFirstAuthentication', 'false')
 tryFirstAuthPass = configRegistry.get('privacyidea/saml/tryFirstAuthentication', '')
 
@@ -56,13 +57,14 @@ elif enabled == 'authproc':
         'preferredTokenType' => '{preferredTokenType}',
         'doEnrollToken' => '{doEnrollToken}',
         'tokenType' => '{tokenType}',
+        'typeOfTokenToEnroll' => '{typeOfTokenToEnroll}',
         'tryFirstAuthentication' => '{tryFirstAuthentication}',
         'tryFirstAuthPass' => '{tryFirstAuthPass}',
 """.format(privacyideaServerURL=privacyideaServerURL, realm=realm, uidKey=uidKey, sslVerifyHost=sslVerifyHost.lower(),
             sslVerifyPeer=sslVerifyPeer.lower(), enabledPath=enabledPath, enabledKey=enabledKey,
             authenticationFlow=authenticationFlow, serviceAccount=serviceAccount, servicePass=servicePass,
             otpFieldHint=otpFieldHint, SSO=SSO.lower(), preferredTokenType=preferredTokenType,
-            doEnrollToken=doEnrollToken, tokenType=tokenType,
+            doEnrollToken=doEnrollToken, tokenType=tokenType, typeOfTokenToEnroll=typeOfTokenToEnroll,
             tryFirstAuthentication=tryFirstAuthentication.lower(), tryFirstAuthPass=tryFirstAuthPass))
 
     if excludeClientIPs != '':
